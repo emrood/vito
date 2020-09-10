@@ -1,10 +1,10 @@
-<?php namespace app/Api\Controllers;
+<?php namespace App\Api\Controllers;
 
-use app/Api\Controllers\Controller;
-use app/User;
-use app/Api\Transformers\app/UserTransformer;
+use App\Api\Controllers\Controller;
+use App\User;
+use App\Api\Transformers\UserTransformer;
 
-class app/UserController extends Controller
+class UserController extends Controller
 {
     /**
      * Eloquent model.
@@ -13,7 +13,7 @@ class app/UserController extends Controller
      */
     protected function model()
     {
-        return new app/User;
+        return new User;
     }
 
     /**
@@ -23,6 +23,10 @@ class app/UserController extends Controller
      */
     protected function transformer()
     {
-        return new app/UserTransformer;
+        return new UserTransformer;
+    }
+
+    protected function test(){
+        return response()->json('test', 200);
     }
 }

@@ -1,9 +1,9 @@
-<?php namespace app/Api\Transformers;
+<?php namespace app\Api\Transformers;
 
-use app/Ticket;
+use app\Models\Ticket;
 use League\Fractal\TransformerAbstract;
 
-class app/TicketTransformer extends TransformerAbstract
+class TicketTransformer extends TransformerAbstract
 {
     /**
      * Turn this item object into a generic array.
@@ -11,7 +11,7 @@ class app/TicketTransformer extends TransformerAbstract
      * @param $item
      * @return array
      */
-    public function transform(app/Ticket $item)
+    public function transform(Ticket $item)
     {
         return [
             'id'         => (int)$item->id,

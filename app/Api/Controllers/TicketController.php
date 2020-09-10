@@ -1,10 +1,10 @@
-<?php namespace app/Api\Controllers;
+<?php namespace app\Api\Controllers;
 
-use app/Api\Controllers\Controller;
-use app/Ticket;
-use app/Api\Transformers\app/TicketTransformer;
+use app\Api\Controllers\Controller;
+use app\Models\Ticket;
+use app\Api\Transformers\TicketTransformer;
 
-class app/TicketController extends Controller
+class TicketController extends Controller
 {
     /**
      * Eloquent model.
@@ -13,7 +13,7 @@ class app/TicketController extends Controller
      */
     protected function model()
     {
-        return new app/Ticket;
+        return new Ticket;
     }
 
     /**
@@ -23,6 +23,6 @@ class app/TicketController extends Controller
      */
     protected function transformer()
     {
-        return new app/TicketTransformer;
+        return new TicketTransformer;
     }
 }

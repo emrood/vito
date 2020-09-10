@@ -1,10 +1,10 @@
-<?php namespace app/Api\Controllers;
+<?php namespace app\Api\Controllers;
 
-use app/Api\Controllers\Controller;
-use app/Role;
-use app/Api\Transformers\app/RoleTransformer;
+use App\Api\Controllers\Controller;
+use App\Models\Role;
+use App\Api\Transformers\RoleTransformer;
 
-class app/RoleController extends Controller
+class RoleController extends Controller
 {
     /**
      * Eloquent model.
@@ -13,7 +13,7 @@ class app/RoleController extends Controller
      */
     protected function model()
     {
-        return new app/Role;
+        return new Role;
     }
 
     /**
@@ -23,6 +23,6 @@ class app/RoleController extends Controller
      */
     protected function transformer()
     {
-        return new app/RoleTransformer;
+        return new RoleTransformer;
     }
 }

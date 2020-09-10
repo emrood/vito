@@ -1,10 +1,10 @@
-<?php namespace app/Api\Controllers;
+<?php namespace App\Api\Controllers;
 
-use app/Api\Controllers\Controller;
-use app/Event;
-use app/Api\Transformers\app/EventTransformer;
+use App\Api\Controllers\Controller;
+use App\Models\Event;
+use app\Api\Transformers\EventTransformer;
 
-class app/EventController extends Controller
+class EventController extends Controller
 {
     /**
      * Eloquent model.
@@ -13,7 +13,7 @@ class app/EventController extends Controller
      */
     protected function model()
     {
-        return new app/Event;
+        return new Event;
     }
 
     /**
@@ -23,6 +23,6 @@ class app/EventController extends Controller
      */
     protected function transformer()
     {
-        return new app/EventTransformer;
+        return new EventTransformer;
     }
 }

@@ -89,7 +89,8 @@ Route::get('/roles', function (Request $request) {
 Route::get('/role/user', function (Request $request) {
     if(!empty($request->all())){
         if($request->has('user_id')){
-            return response()->json(\DB::select('select * from user_role where user_id = ?', [$request->user_id])[0], 200);
+            return response()->json(User::find($request->user_id)->roles, 200);
+//            return response()->json(\DB::select('select * from user_role where user_id = ?', [$request->user_id])[0], 200);
         }
     }
     return response()->json(['error' => true, 'message' => 'user not provided'], 500);
@@ -166,6 +167,7 @@ Route::post('/ticket', function (Request $request) {
         $ticket = Ticket::where('qr_code', $request->qr_code)->where('checked', true)->where('status', '!=', 'cancelled')->first();
         if ($ticket) {
             if ($request->status !== $ticket->status) {
+                $user = User::find($request->user_id);
                 $ticket->status = $request->status;
                 $ticket->save();
                 return response()->json(['error' => false, 'message' => 'ticket status set to ' . $request->status], 200);

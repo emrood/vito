@@ -2,7 +2,7 @@
 
 use App\Api\Controllers\Controller;
 use App\Models\Event;
-use app\Api\Transformers\EventTransformer;
+use App\Api\Transformers\EventTransformer;
 
 class EventController extends Controller
 {

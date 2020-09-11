@@ -25,6 +25,7 @@ Auth::routes();
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::get('/users/test', function (Request $request) {
     return ['data' => true];
 });
@@ -85,6 +86,14 @@ Route::get('/roles', function (Request $request) {
     return response()->json(Role::all(), 200);
 });
 
+Route::get('/role/user', function (Request $request) {
+    if(!empty($request->all())){
+        if($request->has('user_id')){
+            return response()->json(\DB::select('select * from user_role where user_id = ?', [$request->user_id])[0], 200);
+        }
+    }
+    return response()->json(['error' => true, 'message' => 'user not provided'], 500);
+});
 
 //Route::get('/events/generateBarcodes', function (Request $request) {
 //    if(!empty($request->all()) && $request->has('event_id')){

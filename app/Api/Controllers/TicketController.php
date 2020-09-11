@@ -1,8 +1,8 @@
-<?php namespace app\Api\Controllers;
+<?php namespace App\Api\Controllers;
 
-use app\Api\Controllers\Controller;
-use app\Models\Ticket;
-use app\Api\Transformers\TicketTransformer;
+use App\Api\Controllers\Controller;
+use App\Models\Ticket;
+use App\Api\Transformers\TicketTransformer;
 
 class TicketController extends Controller
 {

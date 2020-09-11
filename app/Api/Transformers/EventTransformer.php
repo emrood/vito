@@ -1,6 +1,6 @@
-<?php namespace app\Api\Transformers;
+<?php namespace App\Api\Transformers;
 
-use app\Models\Event;
+use App\Models\Event;
 use League\Fractal\TransformerAbstract;
 
 class EventTransformer extends TransformerAbstract

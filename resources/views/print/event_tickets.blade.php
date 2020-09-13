@@ -7,21 +7,20 @@
     {{--<script src="script.js"></script>--}}
 </head>
 <body>
-@php
-
-@endphp
 <!-- Le reste du contenu -->
 <div>
     <h3 style="text-align: center">{{ 'EVENT: '.$event->name }}</h3>
     <div class="container">
         @foreach($tickets as $ticket)
+
             <div class="qr_image">
                 <img class="svg_content" src="{{ 'data:image/svg+xml;base64,'.$ticket->encoding}}"/>
-                <img class="logo_2" src="{{ URL::to('')."/images/logo_qr_minimal.png" }}"/>
+                {{--<img class="logo_2" src="{{ URL::to('')."/images/logo_qr_minimal.png" }}"/>--}}
                 {{--<p>www.vito.ht</p>--}}
             </div>
         @endforeach
     </div>
+
 </div>
 
 </body>
@@ -30,29 +29,46 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        /*justify-content: space-between;*/
-        margin: 10px;
-        margin: auto;
-        width: 90%;
+        justify-content: center;
+        /*margin: 10px;*/
+        /*margin: auto;*/
+        width: 100%;
         page-break-after: always;
         page-break-inside: auto;
         page-break-before: always;
+        /*border: 2px solid yellow;*/
+        padding: auto;
+        /*margin-top: 40px;*/
+        /*margin-bottom: 40px;*/
+        /*margin-right: 20px;*/
+        /*margin-left: 20px;*/
+
     }
 
     .qr_image {
         display: block;
-        width: 105px;
-        height: 105px;
-        padding: 3px;
-        /*border: 2px solid red;*/
-        /*margin: 30px;*/
-        margin-bottom: 30px;
+        width: 76.8px;
+        height: 96px;
+        /*padding: 3px;*/
+        /*!*border: 2px solid red;*!*/
+        /*!*margin: 15px;*!*/
+        /*margin: 5px;*/
+        /*margin-bottom: 25px;*/
+        /*margin-top: 25px;*/
         page-break-after: always;
+        page-break-inside: auto;
+        page-break-before: always;
+        /*border: 2px solid red;*/
     }
 
     .svg_content{
         /*margin-left: 25%;*/
-        width: 50px;
+        width: 55px;
+        margin-top: 20.5px;
+        margin-bottom: 20.5px;
+        margin-left: 10.9px;
+        margin-right: 10.9px;
+        /*border: 2px solid green;*/
     }
 
     .my_info{

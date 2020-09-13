@@ -52,9 +52,9 @@ Route::get('/users', function (Request $request) {
 
 Route::get('/events', function (Request $request) {
     if (!empty($request->all()) && $request->has('user_id')) {
-        return response()->json(Event::where('user_id', $request->user_id)->get(), 200);
+        return response()->json(Event::where('user_id', $request->user_id)->where('status', 1)->get(), 200);
     }
-    return response()->json(Event::all(), 200);
+    return response()->json(Event::where('status', 1)->get(), 200);
 });
 
 Route::get('/tickets', function (Request $request) {
@@ -89,35 +89,35 @@ Route::get('/roles', function (Request $request) {
 Route::get('/role/user', function (Request $request) {
     if(!empty($request->all())){
         if($request->has('user_id')){
-            return response()->json(User::find($request->user_id)->roles, 200);
+            return response()->json(User::find($request->user_id)->roles->first(), 200);
 //            return response()->json(\DB::select('select * from user_role where user_id = ?', [$request->user_id])[0], 200);
         }
     }
     return response()->json(['error' => true, 'message' => 'user not provided'], 500);
 });
 
-//Route::get('/events/generateBarcodes', function (Request $request) {
-//    if(!empty($request->all()) && $request->has('event_id')){
-//        $tickets = Ticket::where('event_id', $request->event_id)->get();
-//        foreach ($tickets as $ticket){
-//            $path = public_path('qrcodes\barcodes\\' . $ticket->qr_code.'.svg');
-//            $qrcode = new SimpleSoftwareIO\QrCode\Generator();
-//            $qrcode->generate($ticket->qr_code, $path);
-//            $ticket->image_path = 'qrcodes/barcodes/' . $ticket->qr_code.'.svg';
-//            $ticket->save();
-//        }
-//
-//        return response()->json(Ticket::where('event_id', $request->event_id)->get(), 200);
-//    }
-//    return response()->json('error', 500);
-//});
+Route::get('/events/generateBarcodes', function (Request $request) {
+    if(!empty($request->all()) && $request->has('event_id')){
+        $tickets = Ticket::where('event_id', $request->event_id)->get();
+        foreach ($tickets as $ticket){
+            $path = public_path('qrcodes\barcodes\\' . $ticket->qr_code.'.svg');
+            $qrcode = new SimpleSoftwareIO\QrCode\Generator();
+            $qrcode->generate($ticket->qr_code, $path);
+            $ticket->image_path = 'qrcodes/barcodes/' . $ticket->qr_code.'.svg';
+            $ticket->save();
+        }
+
+        return response()->json(Ticket::where('event_id', $request->event_id)->get(), 200);
+    }
+    return response()->json('error', 500);
+});
 
 Route::get('/events/generateTickets', function (Request $request) {
     if (!empty($request->all()) && $request->has('event_id')) {
         $event = Event::find($request->event_id);
         if ($event) {
             if ($event->ticket_qty > 0) {
-                \DB::delete('delete from tickets where event_id = ?', [$request->event_id]);
+//                \DB::delete('delete from tickets where event_id = ?', [$request->event_id]);
                 for ($i = 0; $i < $event->ticket_qty; $i++) {
                     $ticket = new Ticket();
                     $ticket->user_id = $event->user_id;
@@ -150,7 +150,8 @@ Route::get('/events/tickets', function (Request $request) {
     if (!empty($request->all()) && $request->has('event_id')) {
         $event = Event::find($request->event_id);
         if ($event) {
-            $tickets = Ticket::where('event_id', $event->id)->get();
+            //$tickets = Ticket::where('event_id', $event->id)->skip(436)->take(72)->get();
+            $tickets = Ticket::where('event_id', $event->id)->skip(0)->take(72)->get();
 //            $pdf = PDF::loadView('print.event_tickets', compact('event', 'tickets'));
 ////            $pdf = SnappyPdf::loadView('print.event_tickets', compact('event', 'tickets'));
 //            return $pdf->download('document.pdf');

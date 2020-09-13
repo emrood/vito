@@ -164,6 +164,12 @@ Route::get('/events/tickets', function (Request $request) {
 
 Route::post('/ticket', function (Request $request) {
     if (!empty($request->all())) {
+		
+		if($request->has('qr_code')){
+			Log::info('has qr');
+		}else{
+			Log::error('no qr found');
+		}
         Log::info(json_encode($request->all()));
         $ticket = Ticket::where('qr_code', $request->qr_code)->where('checked', true)->where('status', '!=', 'cancelled')->first();
         if ($ticket) {

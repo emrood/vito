@@ -61,7 +61,7 @@ Route::get('/tickets', function (Request $request) {
     if (!empty($request->all())) {
 
         if ($request->has('event_id')) {
-            $tickets = Ticket::where('event_id', $request->event_id);
+            $tickets = Ticket::where('event_id', $request->event_id)->where('checked', true);
             if ($request->has('status')) {
                 $tickets = $tickets->where('status', $request->status);
             }

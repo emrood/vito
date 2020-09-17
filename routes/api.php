@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 //use Knp\Snappy\Pdf;
 use Barryvdh\Snappy\Facades\SnappyPdf;
 use Barryvdh\DomPDF\Facade as PDFL;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 /*
@@ -87,8 +88,8 @@ Route::get('/roles', function (Request $request) {
 });
 
 Route::get('/role/user', function (Request $request) {
-    if(!empty($request->all())){
-        if($request->has('user_id')){
+    if (!empty($request->all())) {
+        if ($request->has('user_id')) {
             return response()->json(User::find($request->user_id)->roles, 200);
             //return response()->json(\DB::select('select * from user_role where user_id = ?', [$request->user_id]), 200);
         }
@@ -97,13 +98,13 @@ Route::get('/role/user', function (Request $request) {
 });
 
 Route::get('/events/generateBarcodes', function (Request $request) {
-    if(!empty($request->all()) && $request->has('event_id')){
+    if (!empty($request->all()) && $request->has('event_id')) {
         $tickets = Ticket::where('event_id', $request->event_id)->get();
-        foreach ($tickets as $ticket){
-            $path = public_path('qrcodes\barcodes\\' . $ticket->qr_code.'.svg');
+        foreach ($tickets as $ticket) {
+            $path = public_path('qrcodes\barcodes\\' . $ticket->qr_code . '.svg');
             $qrcode = new SimpleSoftwareIO\QrCode\Generator();
             $qrcode->generate($ticket->qr_code, $path);
-            $ticket->image_path = 'qrcodes/barcodes/' . $ticket->qr_code.'.svg';
+            $ticket->image_path = 'qrcodes/barcodes/' . $ticket->qr_code . '.svg';
             $ticket->save();
         }
 
@@ -164,14 +165,14 @@ Route::get('/events/tickets', function (Request $request) {
 
 Route::post('/ticket', function (Request $request) {
     if (!empty($request->all())) {
-		
-		if($request->has('qr_code')){
-			Log::info('has qr');
-		}else{
-			Log::error('no qr found');
-		}
+
+        if ($request->has('qr_code')) {
+            Log::info('has qr');
+        } else {
+            Log::error('no qr found');
+        }
         Log::info(json_encode($request->all()));
-        $ticket = Ticket::where('qr_code', $request->qr_code)->where('checked', true)->where('status', '!=', 'cancelled')->first();
+        $ticket = Ticket::where('qr_code', $request->qr_code)->where('checked', true)->first();
         if ($ticket) {
             if ($request->status !== $ticket->status) {
                 $user = User::find($request->user_id);
@@ -179,12 +180,53 @@ Route::post('/ticket', function (Request $request) {
                 $ticket->save();
                 return response()->json(['error' => false, 'message' => 'ticket status set to ' . $request->status], 200);
             }
-            
-            return response()->json(['error' => true, 'message' => 'ticket status already set to ' . $request->status.' !'], 500);
+            Log::error('Trying to double entry ticket #'. $ticket->qr_code);
+            return response()->json(['error' => true, 'message' => 'ticket status already set to ' . $request->status . ' !'], 500);
         }
-
+        Log::error('ticket not checked or cancelled : '.$request->qr_code);
         return response()->json(['error' => true, 'message' => 'ticket not checked or cancelled !'], 500);
     }
 
     return response()->json(['error' => true, 'message' => 'no data !'], 500);
+});
+
+Route::get('/refactor/tickets', function (Request $request) {
+//    if (!empty($request->all()) && $request->has('event_id')) {
+//        $event = Event::find($request->event_id);
+//        if ($event) {
+//            $tickets = Ticket::where('status', 'available')->where('event_id', $event->id)->orderBy('created_at', 'DESC')->get();
+////            dd(count($tickets));
+//            if (count($tickets)) {
+//                $qrs = ['3C4222EC0A', '9A6419F127', '6DB5A884D2', '8C88460CD9', '570CD64CC9', 'B60D8C2A7F', 'EC43415D7C', '353F8B6E11', '3151664EAB', 'D0F2C2CBE9', '7363895C3C', 'B60D8C2A7F', 'EC43415D7C', 'A8C5062CD', '30DF4FCC95'];
+//                $limit = count($qrs);
+//                $i = 0;
+//                foreach ($tickets as $ticket) {
+//                    if ($i < $limit) {
+////                        dd($ticket->wasRecentlyCreated);
+////                        dd($ticket);
+//                        DB::table('tickets')
+//                            ->where('id', $ticket->id)
+//                            ->update(['qr_code' => $qrs[$i], 'status' => "in"]);
+////                        $ticket->qr_code = $qrs[$i];
+////                        $ticket->status = "in";
+////                        $ticket->save();
+//                        Log::info('ticket saved with id : '.$ticket->id.' and qr :'.$ticket->qr_code.' ('.$qrs[$i].') '.$i);
+//                        $i++;
+//                    }
+//                }
+//
+//                return response()->json(['error' => false, 'message' => 'done'], 200);
+//            }
+//
+//
+////            //$tickets = Ticket::where('event_id', $event->id)->skip(436)->take(72)->get();
+////            $tickets = Ticket::where('event_id', $event->id)->skip(0)->take(72)->get();
+//////            $pdf = PDF::loadView('print.event_tickets', compact('event', 'tickets'));
+////////            $pdf = SnappyPdf::loadView('print.event_tickets', compact('event', 'tickets'));
+//////            return $pdf->download('document.pdf');
+//////            return $pdf->stream('document.pdf');
+////            return view('print.event_tickets', compact('event', 'tickets'));
+//        }
+//    }
+//    return abort(500, 'event not defined');
 });

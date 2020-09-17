@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImagePathToEventsTable extends Migration
+class AddGuestToEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,13 @@ class AddImagePathToEventsTable extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             //
-//            $table->string('image_path')->nullable();
+            $table->integer('regular_qty')->after('ticket_qty')->default(0);
+            $table->double('regular_price', 14, 4)->after('regular_qty')->default(0);
+            $table->integer('vip_qty')->after('regular_price')->default(0);
+            $table->double('vip_price', 14, 4)->after('vip_qty')->default(0);
+            $table->integer('guest_qty')->after('vip_price')->default(0);
+            $table->double('guest_price', 14, 4)->after('guest_qty')->default(0);
+
         });
     }
 

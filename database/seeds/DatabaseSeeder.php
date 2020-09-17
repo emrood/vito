@@ -11,11 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        \App\User::create([
-            'name' => 'admin',
-            'email' => 'admin@vito.com',
-            'password' => \Illuminate\Support\Facades\Hash::make('admin123')
-        ]);
+         $this->call(RoleSeeder::class);
+         $this->call(UserSeeder::class);
+//        \App\User::create([
+//            'name' => 'admin',
+//            'email' => 'admin@vito.com',
+//            'password' => \Illuminate\Support\Facades\Hash::make('admin123')
+//        ]);
     }
 }

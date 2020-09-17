@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImagePathToEventsTable extends Migration
+class AddTagToTicketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddImagePathToEventsTable extends Migration
      */
     public function up()
     {
-        Schema::table('events', function (Blueprint $table) {
+        Schema::table('tickets', function (Blueprint $table) {
             //
-//            $table->string('image_path')->nullable();
+            $table->enum('tag', ['regular', 'guest', 'vip'])->default('regular');
+
         });
     }
 
@@ -26,7 +27,7 @@ class AddImagePathToEventsTable extends Migration
      */
     public function down()
     {
-        Schema::table('events', function (Blueprint $table) {
+        Schema::table('tickets', function (Blueprint $table) {
             //
         });
     }

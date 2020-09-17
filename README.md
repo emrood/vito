@@ -1,79 +1,265 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Vitoo API Documentation 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Response Codes 
+### Response Codes
+```
+200: Success
+400: Bad request
+401: Unauthorized
+404: Cannot be found
+405: Method not allowed
+422: Unprocessable Entity 
+50X: Server Error
+```
+### Error Codes Details
+```
+100: Bad Request
+110: Unauthorized
+120: User Authenticaion Invalid
+130: Parameter Error
+140: Item Missing
+150: Conflict
+160: Server Error
+```
+### Example Error Message
+```json
+http code 402
+{
+    "code": 120,
+    "message": "invalid crendetials",
+    "resolve": "The username or password is not correct."
+}
+```
 
-## About Laravel
+## Login
+**You send:**  Your  login credentials.
+**You get:** An `Acces_token` with wich you can make further actions.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Request:**
+```json
+POST /api/auth/login HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+{
+    "email": "foo@bar.com",
+    "password": "1234567" 
+}
+```
+**Successful Response:**
+```json
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: xy
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjEuMTEyOjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2MDAzMTAwNDIsImV4cCI6MTYwMDMxMzY0MiwibmJmIjoxNjAwMzEwMDQyLCJqdGkiOiJZRXZHc3Rqc1BEM01GQ21NIiwic3ViIjoxMCwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.8to1diCw4wJsd7c26VOQ0rfMZVCJdcou3wA1-DIvJzM",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "data": "{\"id\":10,\"name\":\"Agent out\",\"email\":\"checkout@vitohaiti.online\",\"phone_number\":null,\"address\":null,\"sexe\":\"Male\",\"email_verified_at\":null,\"created_at\":\"2020-09-13T11:53:08.000000Z\",\"updated_at\":\"2020-09-13T11:53:08.000000Z\",\"status\":1,\"birthday\":null}"
+}
+```
+**Failed Response:**
+```json
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+Content-Length: xy
 
-## Learning Laravel
+{
+    "code": 120,
+    "message": "invalid crendetials",
+    "resolve": "The username or password is not correct."
+}
+``` 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Register
+**Request:**
+```json
+POST /api/auth/register HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+{
+    "name": "foo (required)",
+    "email": "foo@bar.com (required)",
+    "password": "12223456 (required)",
+    "phone_number": "3333333",
+    "address": "12223456",
+    "sexe": "Male",
+}
+```
+ **Successful Response:**
+ ```json
+ HTTP/1.1 200 OK
+ Content-Type: application/json
+ Content-Length: xy
+ 
+ {
+     "message": "Register Successfully"
+ }
+ ```
+ **Failed Response:**
+ ```json
+ HTTP/1.1 401 Unauthorized
+ Content-Type: application/json
+ Content-Length: xy
+ 
+ {
+     "status": false,
+     "errors": {
+         "email": [
+             "The email has already been taken."
+         ]
+     },
+     "message": "The given data was invalid."
+ }
+ ```
+ 
+ 
+ ## Users
 
-## Laravel Sponsors
+ **Request:**
+ ```json
+ GET /api/users HTTP/1.1
+ Accept: application/json
+ Content-Type: application/json
+ Content-Length: xy
+```
+**Successful Response:**
+```json
+ [
+     {
+         "id": 7,
+         "name": "Emmanuel Noel",
+         "email": "emrood@vitohaiti.online",
+         "phone_number": null,
+         "address": null,
+         "sexe": "Male",
+         "email_verified_at": null,
+         "created_at": "2020-09-13T11:51:03.000000Z",
+         "updated_at": "2020-09-13T11:51:03.000000Z",
+         "status": 1,
+         "birthday": null
+     },
+     {
+         "id": 8,
+         "name": "Michel Audin",
+         "email": "handy@vitohaiti.online",
+         "phone_number": null,
+         "address": null,
+         "sexe": "Male",
+         "email_verified_at": null,
+         "created_at": "2020-09-13T11:52:00.000000Z",
+         "updated_at": "2020-09-13T11:52:00.000000Z",
+         "status": 1,
+         "birthday": null
+     },
+     
+ ]
+ ```
+ 
+  ## Events
+ 
+  **Request:**
+  ```json
+  GET /api/events HTTP/1.1
+  Accept: application/json
+  Content-Type: application/json
+  Content-Length: xy
+  ```
+  **Successful Response:**
+  ```json
+  [
+      {
+          "id": 1,
+          "uid": "dj",
+          "name": "toto",
+          "event_date": "2020-09-10 09:35:02",
+          "address": null,
+          "image_path": null,
+          "ticket_qty": 200,
+          "regular_qty": 0,
+          "regular_price": 0,
+          "vip_qty": 0,
+          "vip_price": 0,
+          "guest_qty": 0,
+          "guest_price": 0,
+          "user_id": 1,
+          "deleted_at": null,
+          "created_at": "2020-09-10T09:35:08.000000Z",
+          "updated_at": "2020-09-10T09:35:09.000000Z",
+          "status": 1,
+          "ticket_price": 0,
+          "currency": "HTG"
+      },
+      {
+          "id": 2,
+          "uid": "dbub",
+          "name": "8748",
+          "event_date": "2020-09-10 09:39:32",
+          "address": null,
+          "image_path": null,
+          "ticket_qty": 50,
+          "regular_qty": 0,
+          "regular_price": 0,
+          "vip_qty": 0,
+          "vip_price": 0,
+          "guest_qty": 0,
+          "guest_price": 0,
+          "user_id": 2,
+          "deleted_at": null,
+          "created_at": "2020-09-10T09:39:39.000000Z",
+          "updated_at": "2020-09-10T09:39:40.000000Z",
+          "status": 1,
+          "ticket_price": 0,
+          "currency": "HTG"
+      }
+  ]
+  ```
+  
+## Events
+   
+**Request:**
+```json
+GET /api/events HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
+```
+**Successful Response:**
+```json
+[
+   {
+     "id": 1,
+     "uid": "dj",
+     "name": "toto",
+     "event_date": "2020-09-10 09:35:02",
+    },
+]
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Request:**
+```json
+GET /api/events/tickets HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+{
+    "event_id": 44,
+}
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-"# vito" 
+```
+**Successful Response:**
+```json
+[
+   {
+     "id": 1,
+     "uid": "dj",
+     "name": "toto",
+     "event_date": "2020-09-10 09:35:02",
+    },
+]
+```

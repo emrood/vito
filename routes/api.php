@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Device;
+use App\Models\EventProduct;
+use App\Models\Pointofsale;
+use App\Models\Product;
 use App\User;
 use \App\Models\Event;
 use \App\Models\Ticket;
@@ -10,6 +14,8 @@ use Barryvdh\Snappy\Facades\SnappyPdf;
 use Barryvdh\DomPDF\Facade as PDFL;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+//use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,13 +48,92 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 Route::post('login', 'Auth\PassportController@login');
 Route::post('register', 'Auth\JwtController@register');
 
-Route::get('/users', [
-    'uses' => 'UserController@test',
-    'as' => 'users.test'
-]);
+//Route::get('/users', [
+//    'uses' => 'UserController@test',
+//    'as' => 'users.test'
+//]);
 
 Route::get('/users', function (Request $request) {
     return response()->json(User::all(), 200);
+});
+
+Route::get('/devices', function (Request $request) {
+    return response()->json(Device::all(), 200);
+});
+
+Route::post('/devices', function (Request $request) {
+    // validate the form data
+    $validator = Validator::make($request->input(),
+        ['model' => 'required', 'manufacturer' => 'required', 'imei' => 'required'],
+        ['model.required' => 'Device model is required', 'manufacturer.required' => 'Manufacturer is required', 'imei.required' => 'imei is required']
+    );
+
+    if ($validator->fails()) {
+        Log::info(json_encode($validator));
+        return response()->json($validator->errors()->first(), 404);
+//        if ($validator->errors()->has('token')) {
+//            return $this->sendError($validator->errors()->first('token'), 200);
+//        } else {
+//            return $this->sendError('Contact Server Administrator', 200);
+//        }
+    }
+
+    $device = (Device::where('imei', $request->get('imei'))->first() !== null) ? Device::where('imei', $request->get('imei'))->first() : new Device();
+    $device->fill($request->all());
+    $device->save();
+    return response()->json(['error' => false, 'message' => 'Device saved !'], 200);
+});
+
+Route::post('/pointofsales', function (Request $request) {
+    // validate the form data
+    $validator = Validator::make($request->input(),
+        ['model' => 'required', 'manufacturer' => 'required', 'imei' => 'required', 'serial_number' => 'required'],
+        ["model.required" => 'Device model is required', "manufacturer.required" => 'Manufacturer is required',]
+    );
+
+    if ($validator->fails()) {
+        Log::info(json_encode($validator));
+        return response()->json($validator->errors()->first(), 404);
+//        if ($validator->errors()->has('token')) {
+//            return $this->sendError($validator->errors()->first('token'), 200);
+//        } else {
+//            return $this->sendError('Contact Server Administrator', 200);
+//        }
+    }
+
+    $pointofsale = (Pointofsale::where('imei', $request->get('imei'))->first() !== null) ? Pointofsale::where('imei', $request->get('imei'))->first() : new Pointofsale();
+    $pointofsale->fill($request->all());
+    $pointofsale->save();
+    return response()->json(['error' => false, 'message' => 'Pointofsale saved !'], 200);
+});
+
+Route::get('/products', function (Request $request) {
+    return response()->json(Product::all(), 200);
+});
+
+Route::get('/pointofsales', function (Request $request) {
+    return response()->json(Pointofsale::all(), 200);
+});
+
+Route::get('/event/products', function (Request $request) {
+    if ($request->has('event_id')) {
+        return response()->json(EventProduct::where('event_id', $request->get('event_id'))->get(), 200);
+    }
+    return response()->json(['error' => true, 'message' => 'Event id not provided'], 405);
+});
+
+Route::get('/user/tickets', function (Request $request) {
+    if ($request->has('user_id')) {
+        return response()->json(Ticket::join('user_tickets', 'tickets.id', '=', 'user_tickets.ticket_id')->where('user_tickets.user_id', $request->get('user_id'))->where('user_tickets.status', 'active')->get(), 200);
+    }
+    return response()->json(['error' => true, 'message' => 'User id not provided'], 405);
+});
+
+Route::get('/user/devices', function (Request $request) {
+    if ($request->has('user_id')) {
+        return response()->json(Device::where('.user_id', $request->get('user_id'))->get(), 200);
+    }
+    return response()->json(['error' => true, 'message' => 'User id not provided'], 405);
 });
 
 Route::get('/events', function (Request $request) {
@@ -180,10 +265,10 @@ Route::post('/ticket', function (Request $request) {
                 $ticket->save();
                 return response()->json(['error' => false, 'message' => 'ticket status set to ' . $request->status], 200);
             }
-            Log::error('Trying to double entry ticket #'. $ticket->qr_code);
+            Log::error('Trying to double entry ticket #' . $ticket->qr_code);
             return response()->json(['error' => true, 'message' => 'ticket status already set to ' . $request->status . ' !'], 500);
         }
-        Log::error('ticket not checked or cancelled : '.$request->qr_code);
+        Log::error('ticket not checked or cancelled : ' . $request->qr_code);
         return response()->json(['error' => true, 'message' => 'ticket not checked or cancelled !'], 500);
     }
 

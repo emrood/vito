@@ -244,7 +244,7 @@ Route::get('/tickets', function (Request $request) {
                 return response()->json($tickets->get(explode(',', $request->only)), 200);
             }
 
-            return response()->json($tickets->get(), 200);
+            return response()->json($tickets->with('user')->get(), 200);
         } else if ($request->has('code')) {
             return response()->json(Ticket::where('qr_code', $request->code)->first(), 200);
         }

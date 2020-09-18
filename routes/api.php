@@ -232,6 +232,10 @@ Route::get('/tickets', function (Request $request) {
                 $tickets = $tickets->where('status', $request->status);
             }
 
+            if ($request->has('tag')) {
+                $tickets = $tickets->where('tag', $request->tag);
+            }
+
             if ($request->has('count')) {
                 if ($request->count) {
                     return response()->json($tickets->count(), 200);

@@ -436,7 +436,16 @@ Content-Length: xy
         "sold": 0,
         "deleted_at": null,
         "created_at": "2020-09-18T12:13:29.000000Z",
-        "updated_at": "2020-09-18T12:13:30.000000Z"
+        "updated_at": "2020-09-18T12:13:30.000000Z",
+        "product": {
+            "id": 1,
+            "name": "Woowo",
+            "barcode": "123456",
+            "image_path": null,
+            "deleted_at": null,
+            "created_at": "2020-09-18T16:11:59.000000Z",
+            "updated_at": "2020-09-18T16:11:59.000000Z"
+        }
     }
 ]
 

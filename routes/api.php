@@ -172,7 +172,7 @@ Route::get('/pointofsales', function (Request $request) {
 
 Route::get('/events/products', function (Request $request) {
     if ($request->has('event_id')) {
-        return response()->json(EventProduct::where('event_id', $request->get('event_id'))->get(), 200);
+        return response()->json(EventProduct::where('event_id', $request->get('event_id'))->with('product')->get(), 200);
     }
     return response()->json(['error' => true, 'message' => 'Event id not provided'], 405);
 });

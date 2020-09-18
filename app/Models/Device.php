@@ -28,4 +28,6 @@ class Device extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    protected $fillable = ['model', 'manufacturer', 'user_id', 'serial_number', 'mac_address', 'ip_address', 'imei', 'uid'];
 }

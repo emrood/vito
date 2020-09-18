@@ -28,4 +28,6 @@ class Pointofsale extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    protected $fillable = ['model', 'manufacturer', 'imei', 'serial_number', 'mac_address', 'ip_address'];
 }

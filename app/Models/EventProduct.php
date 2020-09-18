@@ -28,4 +28,6 @@ class EventProduct extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    protected $fillable = ['event_id', 'product_id', 'price', 'currency', 'initial'];
 }

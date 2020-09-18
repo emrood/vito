@@ -160,6 +160,153 @@ Content-Length: xy
  ]
  ```
  
+ **Request:**
+ ```json
+ GET /api/roles HTTP/1.1
+ Accept: application/json
+ Content-Type: application/json
+ Content-Length: xy
+ 
+ ```
+ **Successful Response:**
+ ```json
+[
+    {
+        "id": 1,
+        "name": "Administrator",
+        "created_at": "2020-09-10T15:37:13.000000Z",
+        "updated_at": "2020-09-10T15:37:14.000000Z"
+    },
+    {
+        "id": 2,
+        "name": "Agent_out",
+        "created_at": "2020-09-10T15:37:30.000000Z",
+        "updated_at": "2020-09-10T15:37:30.000000Z"
+    },
+    {
+        "id": 3,
+        "name": "Agent_in",
+        "created_at": "2020-09-10T15:37:40.000000Z",
+        "updated_at": "2020-09-10T15:37:41.000000Z"
+    },
+    {
+        "id": 4,
+        "name": "Supervisor",
+        "created_at": "2020-09-10T15:38:05.000000Z",
+        "updated_at": "2020-09-10T15:38:05.000000Z"
+    }
+]
+ ```
+ 
+ **Request:**
+  ```json
+  GET /api/role/user HTTP/1.1
+  Accept: application/json
+  Content-Type: application/json
+  Content-Length: xy
+  
+  {
+      "user_id": 1,
+  }
+  
+  ```
+  **Successful Response:**
+  ```json
+  [
+      {
+          "id": 1,
+          "name": "Administrator",
+          "created_at": "2020-09-10T15:37:13.000000Z",
+          "updated_at": "2020-09-10T15:37:14.000000Z",
+          "pivot": {
+              "user_id": 1,
+              "role_id": 1
+          }
+      }
+  ]
+  ```
+  
+  
+   **Request:**
+   ```json
+   GET /api/user/devices HTTP/1.1
+   Accept: application/json
+   Content-Type: application/json
+   Content-Length: xy
+   
+   {
+         "user_id": 1,
+   }
+     
+  ```
+  **Successful Response:**
+  ```json
+   [
+       {
+           "id": 1,
+           "model": "V2",
+           "manufacturer": "LG",
+           "user_id": 1,
+           "uid": null,
+           "imei": "561235495",
+           "serial_number": "BGLODJ",
+           "ip_address": "10.6.89.6",
+           "mac_address": "fe:25:78:96",
+           "status": "active",
+           "deleted_at": null,
+           "created_at": "2020-09-18T13:02:44.000000Z",
+           "updated_at": "2020-09-18T13:02:45.000000Z"
+       }
+   ]
+   ```
+   
+ **Request:**
+ ```json
+ GET /api/user/tickets HTTP/1.1
+ Accept: application/json
+ Content-Type: application/json
+ Content-Length: xy
+   
+ {
+    "user_id": 1,
+ }
+      
+ ```
+ **Successful Response:**
+ ```json
+ [
+       {
+             "id": 1708,
+             "qr_code": "3A9D1DD43B",
+             "image_path": "qrcodes/barcodes/3A9D1DD43B.svg",
+             "event_id": 4,
+             "user_id": 1,
+             "status": "in",
+             "created_at": "2020-09-11T11:06:17.000000Z",
+             "updated_at": "2020-09-13T23:55:09.000000Z",
+             "encoding": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVV3N2Zz4K....",
+             "checked": 1,
+             "tag": "regular"
+         },
+         {
+             "id": 1709,
+             "qr_code": "B78A255E6A",
+             "image_path": "qrcodes/barcodes/B78A255E6A.svg",
+             "event_id": 4,
+             "user_id": 1,
+             "status": "in",
+             "created_at": "2020-09-11T11:06:17.000000Z",
+             "updated_at": "2020-09-13T23:55:46.000000Z",
+             "encoding": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVV3N2Zz4K....",
+             "checked": 1,
+             "tag": "regular"
+         },
+ ]
+```  
+ 
+ 
+ 
+ 
   ## Events
  
   **Request:**
@@ -218,48 +365,279 @@ Content-Length: xy
       }
   ]
   ```
-  
-## Events
-   
-**Request:**
-```json
-GET /api/events HTTP/1.1
-Accept: application/json
-Content-Type: application/json
-Content-Length: xy
-```
-**Successful Response:**
-```json
-[
-   {
-     "id": 1,
-     "uid": "dj",
-     "name": "toto",
-     "event_date": "2020-09-10 09:35:02",
-    },
-]
-```
+ 
 
 **Request:**
 ```json
-GET /api/events/tickets HTTP/1.1
+GET /api/tickets HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 Content-Length: xy
 
 {
-    "event_id": 44,
+    "event_id": 4,
 }
 
 ```
 **Successful Response:**
 ```json
 [
-   {
-     "id": 1,
-     "uid": "dj",
-     "name": "toto",
-     "event_date": "2020-09-10 09:35:02",
+    {
+        "id": 1708,
+        "qr_code": "3A9D1DD43B",
+        "image_path": "qrcodes/barcodes/3A9D1DD43B.svg",
+        "event_id": 4,
+        "user_id": 6,
+        "status": "in",
+        "created_at": "2020-09-11T11:06:17.000000Z",
+        "updated_at": "2020-09-13T23:55:09.000000Z",
+        "encoding": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVV3N2Zz4K....",
+        "checked": 1,
+        "tag": "regular"
+    },
+    {
+        "id": 1709,
+        "qr_code": "B78A255E6A",
+        "image_path": "qrcodes/barcodes/B78A255E6A.svg",
+        "event_id": 4,
+        "user_id": 6,
+        "status": "in",
+        "created_at": "2020-09-11T11:06:17.000000Z",
+        "updated_at": "2020-09-13T23:55:46.000000Z",
+        "encoding": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVV3N2Zz4K....",
+        "checked": 1,
+        "tag": "regular"
     },
 ]
 ```
+
+**Request:**
+```json
+GET /api/events/products HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
+
+{
+    "event_id": 4,
+}
+
+```
+**Successful Response:**
+```json
+[
+    {
+        "id": 1,
+        "event_id": 4,
+        "product_id": 1,
+        "price": 250,
+        "currency": "HTG",
+        "initial": 300,
+        "sold": 0,
+        "deleted_at": null,
+        "created_at": "2020-09-18T12:13:29.000000Z",
+        "updated_at": "2020-09-18T12:13:30.000000Z"
+    }
+]
+
+ ## Products
+
+ **Request:**
+ ```json
+ GET /api/products HTTP/1.1
+ Accept: application/json
+ Content-Type: application/json
+ Content-Length: xy
+```
+**Successful Response:**
+```json
+ [
+     {
+         "id": 1,
+         "name": "Prestige",
+         "barcode": "123456",
+         "image_path": "img/products/prestige.png",
+         "deleted_at": null,
+         "created_at": "2020-09-18T16:11:59.000000Z",
+         "updated_at": "2020-09-18T16:11:59.000000Z"
+     }
+ ]
+ ```
+ 
+ **Request:**
+ ```json
+ POST /api/products HTTP/1.1
+ Accept: application/json
+ Content-Type: application/json
+ Content-Length: xy
+ 
+ {
+     "name": "Heineken",
+     "barcode": "123456789",
+ }
+ 
+ ```
+ **Successful Response:**
+ ```json
+{
+    "error": false,
+    "message": "Product saved !"
+}
+ ```
+ 
+ 
+**Request:**
+```json
+POST /api/products/sold HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
+ 
+{
+    "event_id": 4,
+    "product_id": 6,
+}
+ 
+```
+**Successful Response:**
+```json
+{
+    "error": false,
+    "message": "Sale registered !"
+}
+```
+ 
+  
+**Request:**
+```json
+POST /api/products/initial HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
+   
+{
+   "event_id": 4,
+   "product_id": 6,
+   "initial": 500,
+}
+    
+```
+**Successful Response:**
+```json
+{
+   "error": false,
+   "message": "Stock registered !"
+}
+```
+  
+  
+ ## Devices
+
+ **Request:**
+ ```json
+ GET /api/devices HTTP/1.1
+ Accept: application/json
+ Content-Type: application/json
+ Content-Length: xy
+```
+**Successful Response:**
+```json
+ [
+     {
+         "id": 1,
+         "model": "V2",
+         "manufacturer": "LG",
+         "user_id": 1,
+         "uid": null,
+         "imei": "561235495",
+         "serial_number": "BGLODJ",
+         "ip_address": "10.6.89.6",
+         "mac_address": "fe:25:78:96",
+         "status": "active",
+         "deleted_at": null,
+         "created_at": "2020-09-18T13:02:44.000000Z",
+         "updated_at": "2020-09-18T13:02:45.000000Z"
+     }
+ ]
+ ```
+
+**Request:**
+```json
+POST /api/devices HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
+   
+{
+   "model": "Galaxy S5",
+   "manufacturer": "Samsung",
+   "imei": "s25dojif87986",
+   "mac_address": "fe:89:09:08:98:09",
+   "ip_address": "110.98.23.4",
+   "user_id": 1,
+}
+    
+```
+**Successful Response:**
+```json
+{
+   "error": false,
+   "message": "Device registered !"
+}
+```
+
+ ## Pointofsales
+
+ **Request:**
+ ```json
+ GET /api/pointofsales HTTP/1.1
+ Accept: application/json
+ Content-Type: application/json
+ Content-Length: xy
+```
+**Successful Response:**
+```json
+ [
+     {
+         "id": 1,
+         "model": "P2",
+         "manufacturer": "Mobiware",
+         "user_id": 1,
+         "uid": null,
+         "imei": "561235495",
+         "serial_number": "BGO987GYH",
+         "ip_address": "10.6.89.6",
+         "mac_address": "fe:25:78:96",
+         "status": "active",
+         "deleted_at": null,
+         "created_at": "2020-09-18T13:02:44.000000Z",
+         "updated_at": "2020-09-18T13:02:45.000000Z"
+     }
+ ]
+ ```
+
+**Request:**
+```json
+POST /api/pointofsales HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
+   
+{
+   "model": "V2",
+   "manufacturer": "Sunmi",
+   "imei": "s25dojif87986",
+   "mac_address": "fe:89:09:08:98:09",
+   "ip_address": "110.98.23.4",
+   "user_id": 1,
+}
+    
+```
+**Successful Response:**
+```json
+{
+   "error": false,
+   "message": "Pointofsale registered !"
+}
+```
+

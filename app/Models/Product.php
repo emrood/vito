@@ -15,6 +15,9 @@ class Product extends Model
      */
     protected $table = 'products';
 
+    protected $fillable = ['name', 'barcode', 'image_path'];
+
+
     /**
      * The attributes that aren't mass assignable.
      *

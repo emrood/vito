@@ -105,13 +105,13 @@ Route::post('/pointofsales', function (Request $request) {
 Route::post('/products', function (Request $request) {
     // validate the form data
     $validator = Validator::make($request->input(),
-        ['name' => 'required', 'barcode' => 'required|unique:products'],
-        ['name.required' => 'Product name is required', 'barcode.required' => 'Barcode is required', 'barcode.unique' => 'Ce barcode existe deja !']
+        ['name' => 'required', 'barcode' => 'required|unique:products', 'user_id' => 'required'],
+        ['name.required' => 'Product name is required', 'user_id.required' => 'User is required', 'barcode.required' => 'Barcode is required', 'barcode.unique' => 'Ce barcode existe deja !']
     );
 
     if ($validator->fails()) {
         Log::info(json_encode($validator));
-        return response()->json(['error' => true, 'message' => $validator->errors()->first()], 404);
+        return response()->json(['error' => true, 'message' => $validator->errors()->first()], 401);
     }
 
     $product = (Product::where('barcode', $request->get('barcode'))->first() !== null) ? Product::where('barcode', $request->get('barcode'))->first() : new Product();
@@ -128,27 +128,31 @@ Route::post('/products/sold', function (Request $request) {
     );
 
     if ($validator->fails()) {
-        return response()->json(['error' => true, 'message' => $validator->errors()->first()], 404);
+        return response()->json(['error' => true, 'message' => $validator->errors()->first()], 401);
     }
 
     try{
         EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $request->get('product_id'))->first()->increment('sold');
         return response()->json(['error' => false, 'message' => 'Sale registered !'], 200);
     }catch (\Exception $e){
-        return response()->json(['error' => true, 'message' => 'Cannot register sale : '. $e->getMessage()], 404);
+        return response()->json(['error' => true, 'message' => 'Cannot register sale : '. $e->getMessage()], 401);
     }
 });
 
 Route::post('/products/initial', function (Request $request) {
     // validate the form data
     $validator = Validator::make($request->input(),
-        ['event_id' => 'required', 'product_id' => 'required', 'initial' => 'required'],
-        ['event_id.required' => 'Event is required', 'product_id.required' => 'Product is required', 'initial.required' => 'Quantity is required']
+        ['event_id' => 'required', 'product_id' => 'required', 'initial' => 'required', 'user_id' => 'required'],
+        ['event_id.required' => 'Event is required', 'user_id.required' => 'User is required', 'product_id.required' => 'Product is required', 'initial.required' => 'Quantity is required']
     );
 
     if ($validator->fails()) {
-        return response()->json(['error' => true, 'message' => $validator->errors()->first()], 404);
+        return response()->json(['error' => true, 'message' => $validator->errors()->first()], 401);
     }
+	
+	if($user->roles()->first()->name === config('constants.user.roles.administrator') || $user->roles()->first()->name === config('constants.user.roles.supervisor')){
+			
+	}
 
     try{
         $event_product = EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $request->get('product_id'))->first();
@@ -156,7 +160,7 @@ Route::post('/products/initial', function (Request $request) {
         $event_product->save();
         return response()->json(['error' => false, 'message' => 'Stock registered !'], 200);
     }catch (\Exception $e){
-        return response()->json(['error' => true, 'message' => 'Cannot register sale : '. $e->getMessage()], 404);
+        return response()->json(['error' => true, 'message' => 'Cannot register sale : '. $e->getMessage()], 401);
     }
 });
 
@@ -172,7 +176,7 @@ Route::get('/events/products', function (Request $request) {
     if ($request->has('event_id')) {
         return response()->json(EventProduct::where('event_id', $request->get('event_id'))->with('product')->get(), 200);
     }
-    return response()->json(['error' => true, 'message' => 'Event id not provided'], 405);
+    return response()->json(['error' => true, 'message' => 'Event id not provided'], 401);
 });
 
 Route::post('/events/products', function (Request $request) {
@@ -193,10 +197,10 @@ Route::post('/events/products', function (Request $request) {
             $eventProduct->save();
             return response()->json(['error' => false, 'message' => 'Evenement lie au produit avec succes'], 200);
         }catch (\Exception $e){
-            return response()->json(['error' => true, 'message' => 'Cannot register product on this event : '. $e->getMessage()], 404);
+            return response()->json(['error' => true, 'message' => 'Cannot register product on this event : '. $e->getMessage()], 422);
         }
     }else{
-        return response()->json(['error' => true, 'message' => 'Event already linked to this product'], 404);
+        return response()->json(['error' => true, 'message' => 'Event already linked to this product'], 401);
     }
 });
 
@@ -247,7 +251,7 @@ Route::get('/tickets', function (Request $request) {
             return response()->json(Ticket::where('qr_code', $request->code)->first(), 200);
         }
     }
-    return response()->json(['error' => true, 'message' => 'Event not provided'], 500);
+    return response()->json(['error' => true, 'message' => 'Event not provided'], 401);
 });
 
 Route::get('/roles', function (Request $request) {
@@ -348,13 +352,43 @@ Route::post('/ticket', function (Request $request) {
                 return response()->json(['error' => false, 'message' => 'ticket status set to ' . $request->status], 200);
             }
             Log::error('Trying to double entry ticket #' . $ticket->qr_code);
-            return response()->json(['error' => true, 'message' => 'ticket status already set to ' . $request->status . ' !'], 500);
+            return response()->json(['error' => true, 'message' => 'ticket status already set to ' . $request->status . ' !'], 401);
         }
         Log::error('ticket not checked or cancelled : ' . $request->qr_code);
-        return response()->json(['error' => true, 'message' => 'ticket not checked or cancelled !'], 500);
+        return response()->json(['error' => true, 'message' => 'ticket not checked or cancelled !'], 401);
     }
 
-    return response()->json(['error' => true, 'message' => 'no data !'], 500);
+    return response()->json(['error' => true, 'message' => 'no data !'], 401);
+});
+
+Route::post('/tickets/checked', function (Request $request) {
+	
+	$validator = Validator::make($request->input(),
+        ['qr_code' => 'required', 'user_id' => 'required'],
+        ['qr_code.required' => 'QR is required', 'user_id.required' => 'User is required']
+    );
+
+    if ($validator->fails()) {
+        return response()->json(['error' => true, 'message' => $validator->errors()->first()], 401);
+    }
+	
+	
+    $user = User::find($request->user_id);
+	
+	if($user){
+		if($user->roles()->first()->name === config('constants.user.roles.administrator') || $user->roles()->first()->name === config('constants.user.roles.supervisor')){
+			$ticket = Ticket::where('checked', false)->where('qr_code', $request->qr_code)->first();
+			if($ticket){
+				$ticket->checked = true;
+				$ticket->save();
+				return response()->json(['error' => false, 'message' => 'Ticket activation successfull !'], 200);
+			}
+		}
+		
+		return response()->json(['error' => true, 'message' => 'Action not permitted'], 401);
+	}
+
+    return response()->json(['error' => true, 'message' => 'no data !'], 401);
 });
 
 Route::get('/refactor/tickets', function (Request $request) {

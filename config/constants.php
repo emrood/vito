@@ -19,7 +19,19 @@ return [
             'regular' => 'regular',
             'vip' => 'vip',
             'guest' => 'guest',
-        ]
-    ]
+        ],
+		
+    ],
+	
+	'user' => [
+		'roles' => [
+			'adminitrator' => 'Administrator',
+			'agent_in' => 'Agent_in',
+			'agent_out' => 'Agent_out',
+			'supervisor' => 'Supervisor',
+			'bar' => 'Bar',
+			'regular' => 'Regular',
+		]
+	]
 
 ];

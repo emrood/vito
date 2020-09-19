@@ -552,7 +552,7 @@ Content-Length: xy
  
 {
     "event_id": 4,
-    "product_id": 6,
+    "barcode": "025887458",
     "quantity": 1,
     "cashier_user_id": 1,
     "stock_user_id": 1,

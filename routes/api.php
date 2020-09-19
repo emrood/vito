@@ -125,8 +125,8 @@ Route::post('/products', function (Request $request) {
 Route::post('/products/sold', function (Request $request) {
     // validate the form data
     $validator = Validator::make($request->input(),
-        ['event_id' => 'required', 'product_id' => 'required', 'quantity' => 'required', 'cashier_user_id' => 'required', 'stock_user_id' => 'required'],
-        ['event_id.required' => 'Event is required', 'product_id.required' => 'Product is required', 'cashier_user_id.required' => 'Cashier is required', 'stock_user_id.required' => 'Stock manager is required']
+        ['event_id' => 'required', 'barcode' => 'required', 'quantity' => 'required', 'cashier_user_id' => 'required', 'stock_user_id' => 'required'],
+        ['event_id.required' => 'Event is required', 'barcode.required' => 'Product is required', 'cashier_user_id.required' => 'Cashier is required', 'stock_user_id.required' => 'Stock manager is required']
     );
 
     if ($validator->fails()) {
@@ -134,12 +134,19 @@ Route::post('/products/sold', function (Request $request) {
     }
 
     try{
-        EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $request->get('product_id'))->first()->increment('sold', $request->get('quantity'));
-        $stockLog = new StockLog();
-        $stockLog->fill($request->all());
-        $stockLog->event_product_id = EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $request->get('product_id'))->first()->id;
-        $stockLog->save();
-        return response()->json(['error' => false, 'message' => 'Sale registered !'], 200);
+        $barcode = $request->get('barcode');
+        $product = Product::where('barcode', $barcode)->first();
+        if(!empty($product)){
+            EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $product->id)->first()->increment('sold', $request->get('quantity'));
+            unset($request->barcode);
+            $stockLog = new StockLog();
+            $stockLog->fill($request->all());
+            $stockLog->event_product_id = EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $product->id)->first()->id;
+            $stockLog->save();
+            return response()->json(['error' => false, 'message' => 'Sale registered !'], 200);
+        }else{
+            return response()->json(['error' => true, 'message' => 'Product not found'], 401);
+        }
     }catch (\Exception $e){
         return response()->json(['error' => true, 'message' => 'Cannot register sale : '. $e->getMessage()], 401);
     }

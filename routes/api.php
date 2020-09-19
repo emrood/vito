@@ -160,8 +160,6 @@ Route::post('/products/initial', function (Request $request) {
     }
 });
 
-
-
 Route::get('/products', function (Request $request) {
     return response()->json(Product::all(), 200);
 });
@@ -266,54 +264,54 @@ Route::get('/role/user', function (Request $request) {
     return response()->json(['error' => true, 'message' => 'user not provided'], 500);
 });
 
-Route::get('/events/generateBarcodes', function (Request $request) {
-    if (!empty($request->all()) && $request->has('event_id')) {
-        $tickets = Ticket::where('event_id', $request->event_id)->get();
-        foreach ($tickets as $ticket) {
-            $path = public_path('qrcodes\barcodes\\' . $ticket->qr_code . '.svg');
-            $qrcode = new SimpleSoftwareIO\QrCode\Generator();
-            $qrcode->generate($ticket->qr_code, $path);
-            $ticket->image_path = 'qrcodes/barcodes/' . $ticket->qr_code . '.svg';
-            $ticket->save();
-        }
+//Route::get('/events/generateBarcodes', function (Request $request) {
+//    if (!empty($request->all()) && $request->has('event_id')) {
+//        $tickets = Ticket::where('event_id', $request->event_id)->get();
+//        foreach ($tickets as $ticket) {
+//            $path = public_path('qrcodes\barcodes\\' . $ticket->qr_code . '.svg');
+//            $qrcode = new SimpleSoftwareIO\QrCode\Generator();
+//            $qrcode->generate($ticket->qr_code, $path);
+//            $ticket->image_path = 'qrcodes/barcodes/' . $ticket->qr_code . '.svg';
+//            $ticket->save();
+//        }
+//
+//        return response()->json(Ticket::where('event_id', $request->event_id)->get(), 200);
+//    }
+//    return response()->json('error', 500);
+//});
 
-        return response()->json(Ticket::where('event_id', $request->event_id)->get(), 200);
-    }
-    return response()->json('error', 500);
-});
-
-Route::get('/events/generateTickets', function (Request $request) {
-    if (!empty($request->all()) && $request->has('event_id')) {
-        $event = Event::find($request->event_id);
-        if ($event) {
-            if ($event->ticket_qty > 0) {
-//                \DB::delete('delete from tickets where event_id = ?', [$request->event_id]);
-                for ($i = 0; $i < $event->ticket_qty; $i++) {
-                    $ticket = new Ticket();
-                    $ticket->user_id = $event->user_id;
-                    $ticket->qr_code = \App\Http\Controllers\Controller::getUniqueSaltWithPrefix('TK');
-                    $ticket->event_id = $event->id;
-//                    $ticket->status = config('constants.status.available');
-//                    $qrcode->style('dot', 0.7);
-                    $ticket->status = 'available';
-                    $path = public_path('qrcodes\barcodes\\' . $ticket->qr_code . '.svg');
-                    $qrcode = new SimpleSoftwareIO\QrCode\Generator();
-                    $qrcode->gradient(25, 25, 56, 58, 78, 96, 'vertical');
-                    $qrcode->generate($ticket->qr_code, $path);
-                    $qrcode->size(300);
-                    $qrcode->encoding('UTF-8');
-                    $qrcode->merge(public_path('\images\logo_qr.png'), 0.4, true);
-                    $ticket->image_path = 'qrcodes/barcodes/' . $ticket->qr_code . '.svg';
-                    $ticket->encoding = base64_encode(file_get_contents(public_path('qrcodes\barcodes\\' . $ticket->qr_code . '.svg')));
-                    $ticket->save();
-                }
-            }
-        }
-
-        return response()->json(Ticket::where('event_id', $request->event_id)->get(), 200);
-    }
-    return response()->json('error', 500);
-});
+//Route::get('/events/generateTickets', function (Request $request) {
+//    if (!empty($request->all()) && $request->has('event_id')) {
+//        $event = Event::find($request->event_id);
+//        if ($event) {
+//            if ($event->ticket_qty > 0) {
+////                \DB::delete('delete from tickets where event_id = ?', [$request->event_id]);
+//                for ($i = 0; $i < $event->ticket_qty; $i++) {
+//                    $ticket = new Ticket();
+//                    $ticket->user_id = $event->user_id;
+//                    $ticket->qr_code = \App\Http\Controllers\Controller::getUniqueSaltWithPrefix('TK');
+//                    $ticket->event_id = $event->id;
+////                    $ticket->status = config('constants.status.available');
+////                    $qrcode->style('dot', 0.7);
+//                    $ticket->status = 'available';
+//                    $path = public_path('qrcodes\barcodes\\' . $ticket->qr_code . '.svg');
+//                    $qrcode = new SimpleSoftwareIO\QrCode\Generator();
+//                    $qrcode->gradient(25, 25, 56, 58, 78, 96, 'vertical');
+//                    $qrcode->generate($ticket->qr_code, $path);
+//                    $qrcode->size(300);
+//                    $qrcode->encoding('UTF-8');
+//                    $qrcode->merge(public_path('\images\logo_qr.png'), 0.4, true);
+//                    $ticket->image_path = 'qrcodes/barcodes/' . $ticket->qr_code . '.svg';
+//                    $ticket->encoding = base64_encode(file_get_contents(public_path('qrcodes\barcodes\\' . $ticket->qr_code . '.svg')));
+//                    $ticket->save();
+//                }
+//            }
+//        }
+//
+//        return response()->json(Ticket::where('event_id', $request->event_id)->get(), 200);
+//    }
+//    return response()->json('error', 500);
+//});
 
 Route::get('/events/tickets', function (Request $request) {
 

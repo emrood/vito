@@ -226,6 +226,54 @@ Content-Length: xy
   ]
   ```
   
+**Request: Get user assignation**
+```json
+GET /api/user/assign HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
+ 
+{
+   "user_id": 1,
+}
+    
+```
+**Successful Response:**
+```json
+{
+  "id": 1,
+  "user_id": 3,
+  "event_id": 2,
+  "status": "enable",
+  "event": {
+          "id": 1,
+      },
+
+}
+```
+
+**Request: register user assignation**
+```json
+POST /api/user/assign HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
+ 
+{
+   "user_id": 1,
+   "event_id": 1,
+}
+    
+```
+**Successful Response:**
+```json
+{
+  "error": false,
+  "message": "Assign succes !",
+
+}
+```
+  
   
    **Request:**
    ```json
@@ -505,6 +553,9 @@ Content-Length: xy
 {
     "event_id": 4,
     "product_id": 6,
+    "quantity": 1,
+    "cashier_user_id": 1,
+    "stock_user_id": 1,
 }
  
 ```

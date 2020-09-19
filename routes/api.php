@@ -1,9 +1,11 @@
 <?php
 
 use App\Models\Device;
+use App\Models\EventAgent;
 use App\Models\EventProduct;
 use App\Models\Pointofsale;
 use App\Models\Product;
+use App\Models\StockLog;
 use App\User;
 use \App\Models\Event;
 use \App\Models\Ticket;
@@ -123,8 +125,8 @@ Route::post('/products', function (Request $request) {
 Route::post('/products/sold', function (Request $request) {
     // validate the form data
     $validator = Validator::make($request->input(),
-        ['event_id' => 'required', 'product_id' => 'required'],
-        ['event_id.required' => 'Event is required', 'product_id.required' => 'Product is required',]
+        ['event_id' => 'required', 'product_id' => 'required', 'quantity' => 'required', 'cashier_user_id' => 'required', 'stock_user_id' => 'required'],
+        ['event_id.required' => 'Event is required', 'product_id.required' => 'Product is required', 'cashier_user_id.required' => 'Cashier is required', 'stock_user_id.required' => 'Stock manager is required']
     );
 
     if ($validator->fails()) {
@@ -132,7 +134,11 @@ Route::post('/products/sold', function (Request $request) {
     }
 
     try{
-        EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $request->get('product_id'))->first()->increment('sold');
+        EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $request->get('product_id'))->first()->increment('sold', $request->get('quantity'));
+        $stockLog = new StockLog();
+        $stockLog->fill($request->all());
+        $stockLog->event_product_id = EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $request->get('product_id'))->first()->id;
+        $stockLog->save();
         return response()->json(['error' => false, 'message' => 'Sale registered !'], 200);
     }catch (\Exception $e){
         return response()->json(['error' => true, 'message' => 'Cannot register sale : '. $e->getMessage()], 401);
@@ -142,26 +148,30 @@ Route::post('/products/sold', function (Request $request) {
 Route::post('/products/initial', function (Request $request) {
     // validate the form data
     $validator = Validator::make($request->input(),
-        ['event_id' => 'required', 'product_id' => 'required', 'initial' => 'required', 'user_id' => 'required'],
-        ['event_id.required' => 'Event is required', 'user_id.required' => 'User is required', 'product_id.required' => 'Product is required', 'initial.required' => 'Quantity is required']
+        ['event_id' => 'required', 'product_id' => 'required', 'quantity' => 'required', 'user_id' => 'required'],
+        ['event_id.required' => 'Event is required', 'user_id.required' => 'User is required', 'product_id.required' => 'Product is required', 'quantity.required' => 'Quantity is required']
     );
 
     if ($validator->fails()) {
         return response()->json(['error' => true, 'message' => $validator->errors()->first()], 401);
     }
-	
-	if($user->roles()->first()->name === config('constants.user.roles.administrator') || $user->roles()->first()->name === config('constants.user.roles.supervisor')){
-			
-	}
 
-    try{
-        $event_product = EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $request->get('product_id'))->first();
-        $event_product->initial = $request->initial;
-        $event_product->save();
-        return response()->json(['error' => false, 'message' => 'Stock registered !'], 200);
-    }catch (\Exception $e){
-        return response()->json(['error' => true, 'message' => 'Cannot register sale : '. $e->getMessage()], 401);
+    $user = User::find($request->user_id);
+
+    if($user){
+        if($user->roles->first()->name === config('constants.user.roles.administrator') || $user->roles->first()->name === config('constants.user.roles.supervisor')){
+            try{
+                $event_product = EventProduct::where('event_id', $request->get('event_id'))->where('product_id', $request->get('product_id'))->first();
+                $event_product->initial = $request->quantity;
+                $event_product->save();
+                return response()->json(['error' => false, 'message' => 'inital Stock registered !'], 200);
+            }catch (\Exception $e){
+                return response()->json(['error' => true, 'message' => 'Cannot register stock : '. $e->getMessage()], 401);
+            }
+        }
     }
+
+    return response()->json(['error' => true, 'message' => 'Action non autorisée'], 401);
 });
 
 Route::get('/products', function (Request $request) {
@@ -268,55 +278,6 @@ Route::get('/role/user', function (Request $request) {
     return response()->json(['error' => true, 'message' => 'user not provided'], 500);
 });
 
-//Route::get('/events/generateBarcodes', function (Request $request) {
-//    if (!empty($request->all()) && $request->has('event_id')) {
-//        $tickets = Ticket::where('event_id', $request->event_id)->get();
-//        foreach ($tickets as $ticket) {
-//            $path = public_path('qrcodes\barcodes\\' . $ticket->qr_code . '.svg');
-//            $qrcode = new SimpleSoftwareIO\QrCode\Generator();
-//            $qrcode->generate($ticket->qr_code, $path);
-//            $ticket->image_path = 'qrcodes/barcodes/' . $ticket->qr_code . '.svg';
-//            $ticket->save();
-//        }
-//
-//        return response()->json(Ticket::where('event_id', $request->event_id)->get(), 200);
-//    }
-//    return response()->json('error', 500);
-//});
-
-//Route::get('/events/generateTickets', function (Request $request) {
-//    if (!empty($request->all()) && $request->has('event_id')) {
-//        $event = Event::find($request->event_id);
-//        if ($event) {
-//            if ($event->ticket_qty > 0) {
-////                \DB::delete('delete from tickets where event_id = ?', [$request->event_id]);
-//                for ($i = 0; $i < $event->ticket_qty; $i++) {
-//                    $ticket = new Ticket();
-//                    $ticket->user_id = $event->user_id;
-//                    $ticket->qr_code = \App\Http\Controllers\Controller::getUniqueSaltWithPrefix('TK');
-//                    $ticket->event_id = $event->id;
-////                    $ticket->status = config('constants.status.available');
-////                    $qrcode->style('dot', 0.7);
-//                    $ticket->status = 'available';
-//                    $path = public_path('qrcodes\barcodes\\' . $ticket->qr_code . '.svg');
-//                    $qrcode = new SimpleSoftwareIO\QrCode\Generator();
-//                    $qrcode->gradient(25, 25, 56, 58, 78, 96, 'vertical');
-//                    $qrcode->generate($ticket->qr_code, $path);
-//                    $qrcode->size(300);
-//                    $qrcode->encoding('UTF-8');
-//                    $qrcode->merge(public_path('\images\logo_qr.png'), 0.4, true);
-//                    $ticket->image_path = 'qrcodes/barcodes/' . $ticket->qr_code . '.svg';
-//                    $ticket->encoding = base64_encode(file_get_contents(public_path('qrcodes\barcodes\\' . $ticket->qr_code . '.svg')));
-//                    $ticket->save();
-//                }
-//            }
-//        }
-//
-//        return response()->json(Ticket::where('event_id', $request->event_id)->get(), 200);
-//    }
-//    return response()->json('error', 500);
-//});
-
 Route::get('/events/tickets', function (Request $request) {
 
     if (!empty($request->all()) && $request->has('event_id')) {
@@ -391,43 +352,41 @@ Route::post('/tickets/checked', function (Request $request) {
     return response()->json(['error' => true, 'message' => 'no data !'], 401);
 });
 
-Route::get('/refactor/tickets', function (Request $request) {
-//    if (!empty($request->all()) && $request->has('event_id')) {
-//        $event = Event::find($request->event_id);
-//        if ($event) {
-//            $tickets = Ticket::where('status', 'available')->where('event_id', $event->id)->orderBy('created_at', 'DESC')->get();
-////            dd(count($tickets));
-//            if (count($tickets)) {
-//                $qrs = ['3C4222EC0A', '9A6419F127', '6DB5A884D2', '8C88460CD9', '570CD64CC9', 'B60D8C2A7F', 'EC43415D7C', '353F8B6E11', '3151664EAB', 'D0F2C2CBE9', '7363895C3C', 'B60D8C2A7F', 'EC43415D7C', 'A8C5062CD', '30DF4FCC95'];
-//                $limit = count($qrs);
-//                $i = 0;
-//                foreach ($tickets as $ticket) {
-//                    if ($i < $limit) {
-////                        dd($ticket->wasRecentlyCreated);
-////                        dd($ticket);
-//                        DB::table('tickets')
-//                            ->where('id', $ticket->id)
-//                            ->update(['qr_code' => $qrs[$i], 'status' => "in"]);
-////                        $ticket->qr_code = $qrs[$i];
-////                        $ticket->status = "in";
-////                        $ticket->save();
-//                        Log::info('ticket saved with id : '.$ticket->id.' and qr :'.$ticket->qr_code.' ('.$qrs[$i].') '.$i);
-//                        $i++;
-//                    }
-//                }
-//
-//                return response()->json(['error' => false, 'message' => 'done'], 200);
-//            }
-//
-//
-////            //$tickets = Ticket::where('event_id', $event->id)->skip(436)->take(72)->get();
-////            $tickets = Ticket::where('event_id', $event->id)->skip(0)->take(72)->get();
-//////            $pdf = PDF::loadView('print.event_tickets', compact('event', 'tickets'));
-////////            $pdf = SnappyPdf::loadView('print.event_tickets', compact('event', 'tickets'));
-//////            return $pdf->download('document.pdf');
-//////            return $pdf->stream('document.pdf');
-////            return view('print.event_tickets', compact('event', 'tickets'));
-//        }
-//    }
-//    return abort(500, 'event not defined');
+Route::get('/user/assign', function (Request $request) {
+    $validator = Validator::make($request->input(),
+        ['user_id' => 'required'],
+        ['user_id.required' => 'User is required']
+    );
+
+    if ($validator->fails()) {
+        return response()->json(['error' => true, 'message' => $validator->errors()->first()], 401);
+    }
+
+    if(!empty(EventAgent::where('status', 'enable')->where('user_id', $request->user_id)->first())){
+        return response()->json(EventAgent::where('status', 'enable')->where('user_id', $request->user_id)->with('event')->first(), 200);
+    }
+
+    return response()->json(['error' => true, 'message' => 'assignation non trouvé'], 401);
+});
+
+Route::post('/user/assign', function (Request $request) {
+    $validator = Validator::make($request->input(),
+        ['event_id' => 'required', 'user_id' => 'required'],
+        ['event_id.required' => 'Event is required', 'user_id.required' => 'User is required']
+    );
+
+    if ($validator->fails()) {
+        return response()->json(['error' => true, 'message' => $validator->errors()->first()], 401);
+    }
+
+    if(empty(EventAgent::where('user_id', $request->user_id)->where('event_id', $request->event_id)->first())){
+        $eventAgent = new EventAgent();
+        $eventAgent->user_id = $request->get('user_id');
+        $eventAgent->event_id = $request->get('event_id');
+        $eventAgent->status = 'enable';
+        $eventAgent->save();
+        return response()->json(['error' => false, 'message' => 'Assign succès !'], 200);
+    }else{
+        return response()->json(['error' => true, 'message' => 'Assignation deja enregistrée'], 401);
+    }
 });

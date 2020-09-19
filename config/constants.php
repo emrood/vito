@@ -25,7 +25,7 @@ return [
 	
 	'user' => [
 		'roles' => [
-			'adminitrator' => 'Administrator',
+			'administrator' => 'Administrator',
 			'agent_in' => 'Agent_in',
 			'agent_out' => 'Agent_out',
 			'supervisor' => 'Supervisor',

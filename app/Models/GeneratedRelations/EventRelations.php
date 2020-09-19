@@ -35,4 +35,15 @@ trait EventRelations
         return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
 
+    /**
+     * "has many" relation to `event_agents` table
+     * via `event_id` field.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function agents()
+    {
+        return $this->hasMany(\App\Models\EventAgent::class, 'event_id');
+    }
+
 }

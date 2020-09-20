@@ -41,7 +41,7 @@ class InvalidateAgents extends Command
     public function handle()
     {
 
-        $events = Event::whereDate('event_date', Carbon::today())->get();
+        $events = Event::whereDate('event_date', Carbon::yesterday())->get();
 
         if(count($events)){
             foreach ($events as $event){

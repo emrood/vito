@@ -3,6 +3,7 @@
 use App\Models\Device;
 use App\Models\EventAgent;
 use App\Models\EventProduct;
+use App\Models\Partner;
 use App\Models\Pointofsale;
 use App\Models\Product;
 use App\Models\StockLog;
@@ -61,6 +62,10 @@ Route::get('/users', function (Request $request) {
 
 Route::get('/devices', function (Request $request) {
     return response()->json(Device::all(), 200);
+});
+
+Route::get('/partners', function (Request $request) {
+    return response()->json(Partner::all(), 200);
 });
 
 Route::post('/devices', function (Request $request) {

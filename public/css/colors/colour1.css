@@ -39,7 +39,7 @@ footer .social-line li a:hover,
 .sec-title a:hover,
 .dark-vz .social-line li a:hover,
 .light-vz .social-line li a:hover {
-  background-color: #F57C00;
+  background-color: #ff603b;
 }
 
 .conference-tabs-sec .tab-content .tab-pane .nav-tabs li a.active,
@@ -67,15 +67,15 @@ footer .social-line li a:hover,
 .light-vz .contact-sec .btn-default,
 .light-vz .contact-sec .contact-sec-details .form-field input[type="submit"],
 .light-vz .error, .light-vz .success-message, .light-vz .error-message {
-  color: #F57C00;
+  color: #ff603b;
 }
 
 .social-line li a:hover:before {
-  border-bottom-color: #F57C00;
+  border-bottom-color: #ff603b;
 }
 
 .social-line li a:hover:after {
-  border-top-color: #F57C00;
+  border-top-color: #ff603b;
 }
 
 .conference-tabs-sec .tab-content .tab-pane .nav-tabs li a:before,
@@ -83,7 +83,7 @@ footer .social-line li a:hover,
 .price-sec-details .price.active,
 .about-sec-details .bn-links li a,
 .circle-v .sec-title .icon-inner .fa-stack-1x {
-  border-color: #F57C00;
+  border-color: #ff603b;
 }
 
 .btn-default:hover,

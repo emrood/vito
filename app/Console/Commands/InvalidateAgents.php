@@ -41,7 +41,7 @@ class InvalidateAgents extends Command
     public function handle()
     {
 
-        $events = Event::whereDate('event_date', Carbon::yesterday())->get();
+        $events = Event::whereDate('event_date', '<=', Carbon::yesterday())->get();
 
         if(count($events)){
             foreach ($events as $event){
@@ -51,6 +51,10 @@ class InvalidateAgents extends Command
                     Log::warning('Desactivating '. $agent->user->name.' for '.$event->name);
                     $this->warn('Desactivating '. $agent->user->name.' for '.$event->name);
                 }
+
+                $event->status = false;
+                $event->save();
+                $this->info('disabling event '. $event->name.' '. $event->uid.'... ');
             }
         }else{
             $this->error('No events in the list');

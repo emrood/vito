@@ -268,7 +268,7 @@ nav ul li a.active, nav ul li a:hover {
   text-transform: uppercase;
 }
 .responsive-mobile-menu ul li a.active {
-  background-color: #F57C00;
+  background-color: #ff603b;
 }
 .responsive-mobile-menu ul li a:before {
   content: '\f107';
@@ -560,7 +560,7 @@ nav ul li a.active, nav ul li a:hover {
 }
 .bn-links li a:hover {
   border-color: transparent;
-  background-color: #F57C00;
+  background-color: #ff603b;
 }
 .bn-links li a i {
   padding-left: 6px;
@@ -2006,7 +2006,7 @@ nav ul li a.active, nav ul li a:hover {
 }
 
 .circle-v .testimonial-sect .sec-title .icon-inner .fa-stack-1x {
-  color: #F57C00;
+  color: #ff603b;
   background-color: #ffffff;
   -webkit-border-radius: 100px;
   -ms-border-radius: 100px;
@@ -2109,7 +2109,7 @@ nav ul li a.active, nav ul li a:hover {
 }
 
 .valentine-v .blog-posts .blog-post .blog-info .btn-default:hover {
-  background-color: #F57C00;
+  background-color: #ff603b;
 }
 
 .halloween-v .banner-section,
@@ -2153,7 +2153,7 @@ nav ul li a.active, nav ul li a:hover {
 }
 
 .christ-v .price-sec-details .price .btn-default {
-  background-color: #F57C00;
+  background-color: #ff603b;
 }
 
 .christ-v .price-sec-details .price .btn-default:hover {
@@ -2471,7 +2471,7 @@ nav ul li a.active, nav ul li a:hover {
 }
 
 .colour1 {
-  background-color: #F57C00;
+  background-color: #ff603b;
 }
 
 .colour2 {
@@ -2599,7 +2599,7 @@ nav ul li a.active, nav ul li a:hover {
 .error-message {
   color: #fff;
   font-size: 18px;
-  background-color: #F57C00;
+  background-color: #ff603b;
   height: 45px;
   line-height: 45px;
   padding: 0 15px;

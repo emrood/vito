@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-@php setlocale(LC_ALL, 'fr_FR'); @endphp
+@php
+    setlocale(LC_ALL, 'fr_FR');
+    setlocale(LC_TIME, "fr_FR");
+@endphp
 <html lang="fr"  xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -128,7 +131,10 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="#" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">S'enregistrer <i class="fa fa-arrow-circle-right"></i></a>
+                    @if($event->status === 1)
+                        <a href="#" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">S'enregistrer <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                        @endif
                 </div>
             </div><!--banner-slide end-->
             <div class="banner-slide">
@@ -177,7 +183,7 @@
                                         {{--</div>--}}
                                     {{--</div>--}}
                                     <div class="form-field">
-                                        <button type="button" class="btn-default" onclick="showError('Cette option sera disponible bientot')">Réservez maintenant <i class="fa fa-arrow-circle-right"></i></button>
+                                       @if($event->status === 1) <button type="button" class="btn-default" onclick="showError('Cette option sera disponible bientot')">Réservez maintenant <i class="fa fa-arrow-circle-right"></i></button> @endif
                                     </div>
                                 </form>
                             </div><!--reg-form end-->
@@ -361,8 +367,10 @@
                                                     </div>
                                                     <p>{{ $event->description  }}</p>
                                                     <hr/>
+                                                    @if($event->status === 1)
                                                     <a href="" title="" event_id="{{ $event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')"> Acheter mon billet <i class="fa fa-arrow-circle-right"></i></a>
-                                                    <br/>
+                                                    @endif
+                                                        <br/>
                                                     <hr/>
                                                     <div class="us-details">
                                                         <h3> {{ $event->regular_price.' '.$event->currency }} <small>/ <i class="fa fa-map-marker"></i> {{ $event->address }} </small></h3>
@@ -398,8 +406,10 @@
                                                     </div>
                                                     <p>{{ $event->description  }}</p>
                                                     <hr/>
+                                                    @if($event->status === 1)
                                                     <a href="" title="" event_id="{{ $event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')"> Acheter mon billet <i class="fa fa-arrow-circle-right"></i></a>
-                                                    <br/>
+                                                    @endif
+                                                        <br/>
                                                     <hr/>
                                                     <div class="us-details">
                                                         <h3> {{ $event->regular_price.' '.$event->currency }} <small>/ <i class="fa fa-map-marker"></i> {{ $event->address }} </small></h3>
@@ -435,7 +445,9 @@
                                                     </div>
                                                     <p>{{ $event->description  }}</p>
                                                     <hr/>
+                                                    @if($event->status === 1)
                                                     <a href="" title="" event_id="{{ $event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')">Acheter mon billet<i class="fa fa-arrow-circle-right"></i></a>
+                                                    @endif
                                                     <br/>
                                                     <hr/>
                                                     <div class="us-details">
@@ -474,7 +486,9 @@
                                                         </div>
                                                         <p>{{ $last_event->description  }}</p>
                                                         <hr/>
+                                                        @if($event->status === 1)
                                                         <a href="" title="" event_id="{{ $last_event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')">Acheter mon billet<i class="fa fa-arrow-circle-right"></i></a>
+                                                        @endif
                                                         <br/>
                                                         <hr/>
                                                         <div class="us-details">
@@ -745,7 +759,7 @@
                                 <li><i class="fa fa-times-circle-o text-danger"></i>Génération de QR en backup</li>
                                 <li><i class="fa fa-times-circle-o text-danger"></i>Cordon de sécurité</li>
                             </ul>
-                            <a href="#" title="" class="btn-default">RESERVER</a>
+                            <a href="" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">RESERVER</a>
                         </div><!--price end-->
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
@@ -768,7 +782,7 @@
                                 <li><i class="fa fa-times-circle-o text-danger"></i>Génération de QR en backup</li>
                                 <li><i class="fa fa-times-circle-o text-danger"></i>Cordon de sécurité</li>
                             </ul>
-                            <a href="#" title="" class="btn-default">RESERVER</a>
+                            <a href="" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">RESERVER</a>
                         </div><!--price end-->
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
@@ -791,7 +805,7 @@
                                 <li><i class="fa fa-check-circle-o text-success"></i>Génération de QR en backup</li>
                                 <li><i class="fa fa-check-circle-o text-success"></i>Cordon de sécurité</li>
                             </ul>
-                            <a href="#" title="" class="btn-default">RESERVER</a>
+                            <a href="" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">RESERVER</a>
                         </div><!--price end-->
                     </div>
                 </div>
@@ -1151,15 +1165,15 @@
     <footer>
         <div class="container">
             <ul class="social-line list-inline">
-                <li class="wow flipInY" data-wow-duration="100ms"><a href="=https://web.facebook.com/vitoohts" class="facebook"><i
+                <li class="wow flipInY" data-wow-duration="100ms"><a href="https://web.facebook.com/vitoohts" target="_blank" class="facebook"><i
                                 class="fa fa-facebook"></i></a></li>
                 <li class="wow flipInY" data-wow-duration="200ms"><a href="#" class="twitter"><i
                                 class="fa fa-twitter"></i></a></li>
                 <li class="wow flipInY" data-wow-duration="300ms"><a href="mailto:vitoohts@gmail.com" class="google"><i
                                 class="fa fa-google-plus"></i></a></li>
-                <li class="wow flipInY" data-wow-duration="400ms"><a href="https://www.linkedin.com/company/vitoohts" class="linkedin"><i
+                <li class="wow flipInY" data-wow-duration="400ms"><a href="https://www.linkedin.com/company/vitoohts" target="_blank" class="linkedin"><i
                                 class="fa fa-linkedin"></i></a></li>
-                <li class="wow flipInY" data-wow-duration="500ms"><a href="https://www.instagram.com/vitoohts/" class="instagram"><i
+                <li class="wow flipInY" data-wow-duration="500ms"><a href="https://www.instagram.com/vitoohts/" target="_blank" class="instagram"><i
                                 class="fa fa-instagram"></i></a></li>
             </ul>
             <p>© <?php echo date("Y"); ?> Vitoo — Check in securely</p>

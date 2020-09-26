@@ -1,0 +1,50 @@
+
+@import 'base.scss';
+
+
+.sec-title .icon-inner .rhex,
+.btn-default,
+.abt-imgs .abt-img:before,
+.testimonial-sect,
+.price-sec-details .price:before,
+.price-sec-details .price .btn-default,
+.faqs-sec-details .nav-tabs li a.active, .faqs-sec-details .nav-tabs li a:hover,
+.contact_details,
+.scrollTop,
+.banner-slide .reg-form .sec-title,
+.bn-links li a.active,
+.bn-links li a:hover,
+.newyear-v .team-sec-details .team-detail .cmntr-img .hex-inner:before,
+.price-sec-details .price.active .btn-default,
+.price-sec-details .price:hover .btn-default,
+.blog-posts .blog-post .blog-info .btn-default:hover,
+.two-layouts > ul li.active a {
+	background-color: $color4;
+}
+.conference-tabs-sec .tab-content .tab-pane .nav-tabs li a.active,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head span,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head h3,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head .share-btn,
+.testimonial-sect .sec-title .icon-inner .fa-stack-1x,
+.team-sec-details .team-detail .team-info > span,
+.price-sec-details .price h2,
+.contact_details .sec-title .icon-inner .fa-stack-1x,
+.contact_details .btn-default,
+.banner-slide .reg-form .sec-title .icon-inner .fa-stack-1x,
+.contact-info-details ul li .con-info h4,
+.blog-posts .blog-post .blog-info .posted-ot h4 {
+	color: $color4;
+}
+.conference-tabs-sec .tab-content .tab-pane .nav-tabs li a:before,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head .share-btn,
+.price-sec-details .price.active {
+	border-color: $color4;
+}
+.btn-default:hover,
+.price-sec-details .price .btn-default:hover {
+	background-color: $lgt-color2;
+}
+.faqs-sec-details .nav-tabs li a.active, .faqs-sec-details .nav-tabs li a:hover,
+.faqs-sec-details .nav-tabs li a:hover:before {
+	color: #fff;
+}

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use App\Models\Partner;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $events = Event::orderBy('event_date', 'DESC')->skip(0)->take(10)->get();
+        $partners = Partner::all();
+        return view('welcome', compact('events', 'partners'));
     }
 }

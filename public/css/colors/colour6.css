@@ -1,0 +1,115 @@
+.sec-title .icon-inner .rhex,
+.btn-default,
+.abt-imgs .abt-img:before,
+.testimonial-sect,
+.price-sec-details .price:before,
+.price-sec-details .price .btn-default,
+.faqs-sec-details .nav-tabs li a.active, .faqs-sec-details .nav-tabs li a:hover,
+.contact_details,
+.scrollTop,
+.banner-slide .reg-form .sec-title,
+.bn-links li a:hover,
+.bn-links li a.active,
+.about-sec-details .bn-links li a:hover,
+.team-sec-details .team-detail .cmntr-img .hex-inner:before,
+.newyear-v .team-sec-details .team-detail .cmntr-img .hex-inner:before,
+.social-line li a:hover,
+.blog-posts .blog-post .blog-info .btn-default:hover,
+.price-sec-details .price.active .btn-default,
+.blog-posts .blog-post .blog-img:before,
+.blog-posts .blog-post .blog-img:after,
+footer .social-line li a:hover,
+.scrollTop:hover,
+.banner-carousel .slick-prev:hover:before,
+.banner-carousel .slick-next:hover:before,
+.valentine-v .blog-posts .blog-post .blog-info .btn-default:hover,
+.price-sec-details .price.active .btn-default,
+.price-sec-details .price:hover .btn-default,
+.circle-v .sec-title .icon-inner .fa-stack-1x,
+.circle-v .sec-title .icon-inner .fa-stack,
+.christ-v .price-sec-details .price .btn-default,
+.thanksgiving-v .about-sec,
+.two-layouts > ul li.active a,
+.contact-sec-details .form-field input[type="submit"],
+.contact-sec-details .form-field input[type="submit"]:hover,
+.error, .success-message, .error-message,
+.contact-info-details ul,
+.light-vz .doc-sec,
+.light-vz .contact-sec,
+.sec-title a:hover,
+.dark-vz .social-line li a:hover,
+.light-vz .social-line li a:hover {
+  background-color: #89c144;
+}
+
+.conference-tabs-sec .tab-content .tab-pane .nav-tabs li a.active,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head span,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head h3,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head .share-btn,
+.testimonial-sect .sec-title .icon-inner .fa-stack-1x,
+.team-sec-details .team-detail .team-info > span,
+.price-sec-details .price h2,
+.contact_details .sec-title .icon-inner .fa-stack-1x,
+.contact_details .btn-default,
+.banner-slide .reg-form .sec-title .icon-inner .fa-stack-1x,
+.about-sec-details .bn-links li a,
+.blog-posts .blog-post .blog-info .posted-ot h4,
+.play-btn .fa,
+.contact-info-details ul li .con-info h4,
+.valentine-v .fa-stack-2x,
+.circle-v .testimonial-sect .sec-title .icon-inner .fa-stack-1x,
+.thanksgiving-v .bn-links li a,
+.thanksgiving-v .bn-links li a.active,
+.thanksgiving-v .about-sec .sec-title .icon-inner .fa-stack-1x,
+.light-vz .doc-sec .sec-title .icon-inner .fa-stack-1x,
+.light-vz .doc-sec .btn-default,
+.light-vz .contact-sec .sec-title .icon-inner .fa-stack-1x,
+.light-vz .contact-sec .btn-default,
+.light-vz .contact-sec .contact-sec-details .form-field input[type="submit"],
+.light-vz .error, .light-vz .success-message, .light-vz .error-message {
+  color: #89c144;
+}
+
+.social-line li a:hover:before {
+  border-bottom-color: #89c144;
+}
+
+.social-line li a:hover:after {
+  border-top-color: #89c144;
+}
+
+.conference-tabs-sec .tab-content .tab-pane .nav-tabs li a:before,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head .share-btn,
+.price-sec-details .price.active,
+.about-sec-details .bn-links li a,
+.circle-v .sec-title .icon-inner .fa-stack-1x {
+  border-color: #89c144;
+}
+
+.btn-default:hover,
+.price-sec-details .price .btn-default:hover {
+  background-color: #293239;
+}
+
+.faqs-sec-details .nav-tabs li a.active, .faqs-sec-details .nav-tabs li a:hover,
+.faqs-sec-details .nav-tabs li a:hover:before,
+.contact-info-details ul li .con-info h4,
+.testimonial-sect .sec-title h3 small,
+.testimonial-sec .comment-slide .comment-para span, .testimonial-sec .comment-slide .comment-para a {
+  color: #fff;
+}
+
+.circle-v .contact_details .sec-title .icon-inner .fa-stack-1x,
+.contact_details .btn-default,
+.contact_details .sec-title .icon-inner .rhex,
+.testimonial-sect .sec-title .icon-inner .rhex,
+.light-vz .contact-sec .contact-sec-details .form-field input[type="submit"],
+.testimonial-sec .slick-dots li.slick-active button {
+  background-color: #ffffff;
+}
+
+.dark-vz .testimonial-sec .slick-dots li button {
+  border-color: #ffffff;
+}
+
+/*# sourceMappingURL=colour6.css.map */

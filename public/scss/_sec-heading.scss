@@ -1,0 +1,83 @@
+
+
+.sec-title {
+	float: left;
+	width: 100%;
+	margin-bottom: 38px;
+	.icon-inner {
+		float: left;
+	    width: 70px;
+	    .fa-stack {
+		    width: 50px;
+		    height: 57px;
+		    line-height: 57px;
+		    margin-right: 20px;
+		}
+		.fa-stack-1x {
+			color: #fff;
+			font-size: 24px;
+		}
+		.rhex {
+		    margin-top: 14px;
+		    width: 50px;
+		    height: 28px;
+		    @include radius(2px);
+		    &:before,&:after {
+		    	position: absolute;
+			    top: 0; 
+			    left: 0;
+			    width: inherit;
+			    height: inherit;
+			    @include radius(inherit);
+			    background-color: inherit;
+			    content: '';
+		    }
+		    &:before {
+		    	@include transform(rotate(60deg));
+		    }
+		    &:after {
+		    	@include transform(rotate(-60deg));
+		    }
+		}
+	}
+	h3 {
+		float: left;
+		color: #ffffff;
+		font-size: 24px;
+		font-weight: 800;
+		text-transform: uppercase;
+		margin-top: 13px;
+		padding-left: 1px;
+		small {
+			font-weight: 300;
+			text-transform: capitalize;
+		}
+	}
+	a {
+		float: right;
+		font-size: 18px;
+		font-weight: 700;
+		height: 60px;
+		line-height: 60px;
+		border:1px solid;
+		padding: 0 20px;
+		@include radius(10px);
+		margin-top: -2px;
+		text-transform: uppercase;
+		@include transition(all 0.4s ease-in);
+		&:hover {
+			color: #fff;
+			border-color: transparent;
+		}
+		i {
+			padding-right: 5px;
+		}
+	}
+	
+}
+
+
+
+
+
+

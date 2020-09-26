@@ -1,0 +1,108 @@
+
+@import 'bootstrap.min.css';
+@import 'base.scss';
+
+
+
+/* ==========================================================================
+                                RESET CSS
+============================================================================= */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+
+body {
+  font-family: $font-family1;
+  color: #aeb4b6;
+  font-size: $basic-size;
+  font-weight: 400; 
+  overflow-x: hidden;
+  position: relative;
+}
+img {
+  float: left;
+}
+a {
+  transition: all 0.4s ease-in;
+}
+a:focus,
+a:hover {
+  text-decoration: none; 
+}
+
+
+
+.container {
+  max-width: 1170px;
+  padding: 0;
+}
+ul {
+  padding: 0;
+  margin: 0; 
+}
+
+li {
+  list-style: none; 
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family1; 
+}
+.dark-vz {
+  background-color: $temp-color;
+}
+p {
+  font-size: $basic-size;
+  line-height: 26px;
+}
+
+section {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+footer {
+  float: left;
+  width: 100%;
+}
+select:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; 
+}
+
+.sec-padding {
+  padding: $sec-padding;
+}
+.slick-slide {
+  outline:none;
+}

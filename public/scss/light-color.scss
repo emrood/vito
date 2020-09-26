@@ -1,0 +1,216 @@
+
+@import 'base.scss';
+
+
+.contact-info-details ul,
+.price-sec-details .price .btn-default {
+	background-color: $lgt-color1;
+}
+
+.sec-title h3,
+.team-sec-details .team-detail .team-info h3,
+.blog-posts .blog-post .blog-info h3 a,
+.blog-posts .blog-post .blog-info h3 {
+	color: $lgt-color1;
+}
+.sec-title h3 small,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head span i {
+	color: $lgt-color2;
+}
+.contact-info-details ul li .con-info h4,
+.bn-links li a,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head h3,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head .share-btn,
+.testimonial-sect .sec-title .icon-inner .fa-stack-1x,
+.team-sec-details .team-detail .team-info > span,
+.price-sec-details .price h2,
+.blog-posts .blog-post .blog-info .posted-ot h4,
+.contact_details .sec-title .icon-inner .fa-stack-1x,
+.contact_details .btn-default,
+.banner-slide .sec-title .icon-inner .fa-stack-1x,
+.play-btn .fa,
+.about-sec-details .bn-links li a,
+.valentine-v .fa-stack-2x,
+.doc-sec .btn-default,
+.doc-sec .sec-title .icon-inner .fa-stack-1x,
+.contact-sec .sec-title .icon-inner .fa-stack-1x,
+.contact-sec-details .form-field input[type="submit"],
+.light-vz .error, .light-vz .success-message, .light-vz .error-message {
+	color: $clr1;
+}
+.bn-links li a,
+.conference-tabs-sec .tab-content .tab-pane .nav-tabs li a:before,
+.about-sec-details .bn-links li a {
+	border-color: $clr1;
+}
+.sec-title .icon-inner .rhex,
+.bn-links li a.active,
+.about-sec-details .bn-links li a:hover,
+.abt-imgs .abt-img:before,
+.btn-default,
+.btn-default:hover,
+.testimonial-sect,
+.team-sec-details .team-detail .cmntr-img .hex-inner:before,
+.social-line li a:hover,
+.price-sec-details .price:before,
+.faqs-sec-details .nav-tabs li a.active,
+.contact_details,
+.bn-links li a.active,
+.banner-slide .reg-form .sec-title,
+.scrollTop,
+.bn-links li a:hover,
+.no-hexa .sec-title .icon-inner .fa-stack,
+.circle-v .sec-title .icon-inner .fa-stack,
+.price-sec-details .price.active .btn-default,
+.price-sec-details .price:hover .btn-default,
+.blog-posts .blog-post .blog-info .btn-default:hover,
+.faqs-sec-details .nav-tabs li a:hover,
+.two-layouts > ul li.active a,
+.doc-sec,
+.contact-sec {
+	background-color: $clr1;
+}
+.about-sec,
+.event-price-sec,
+.blog-sec {
+	background-color: $lgt-bg-color1;
+}
+
+.conference-sec,
+.faqs-sec,
+.register-sec,
+.team-sec,
+.price-sec-details .price h3,
+footer {
+	background-color: $lgt-bg-color2;
+}
+
+.about-sec-details p,
+.confy-cmpt-details .cmpt-details .cmp-info p{
+	color: $para-lgt-color;
+}
+
+.conference-tabs-sec .conf-tab-list ul,
+.sec-title a:hover {
+	background-color: $lgt-color2;
+}
+.sec-title a,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head span,
+.confy-cmpt-details .cmpt-details .cmp-info .us-details h3,
+.confy-cmpt-details .cmpt-details .cmp-info .us-details ul li a {
+	color: $lgt-color2;
+}
+.sec-title a,
+.faqs-sec-details .nav-tabs li a,
+.faqs-sec-details .ques-details,
+.blog-posts .blog-post .blog-info .btn-default {
+	border-color: $clr2;
+}
+.confy-cmpt-details .cmpt-details .cmp-info {
+	background-color: #fff;
+}
+.confy-cmpt-details .cmpt-details .cmp-info:before {
+	border-top-color: #fff;
+}
+
+.confy-cmpt-details .cmpt-details .cmp-img img {
+	border-color: #afb4ba;
+}
+.confy-cmpt-details,
+.slick-prev:before, .slick-next:before {
+	border-color: $clr2;
+}
+
+.slick-prev:before, .slick-next:before,
+.team-sec-details .team-detail .team-info > p,
+.price-sec-details .price h3,
+.faqs-sec-details .nav-tabs li a,
+.faqs-sec-details .nav-tabs li a:before,
+.blog-posts .blog-post .blog-info p,
+.blog-posts .blog-post .blog-info .posted-ot span,
+.blog-posts .blog-post .blog-info .btn-default,
+footer p,
+.faqs-sec-details .ques-details ul li {
+	color: $clr2;
+}
+
+
+#sponsor {
+	background-color: #fbfbfb;
+}
+
+.testimonial-sect .sec-title .icon-inner .rhex,
+.doc-sec .sec-title .icon-inner .rhex,
+.testimonial-sec .slick-dots li.slick-active button,
+.faqs-sec-details .nav-tabs li a,
+.faqs-sec-details .ques-details,
+.form-field input, .form-field .select,
+.contact_details .sec-title .icon-inner .rhex,
+.contact_details .btn-default,
+.register-sec-details form .dropeddown,
+.no-hexa .contact_details .sec-title .icon-inner .fa-stack,
+.no-hexa .testimonial-sect .sec-title .icon-inner .fa-stack,
+.circle-v .contact_details .sec-title .icon-inner .fa-stack,
+.doc-sec .btn-default,
+.contact-sec .sec-title .icon-inner .rhex,
+.light-vz .error, .light-vz .success-message, .light-vz .error-message {
+	background-color: #fff;
+}
+.testimonial-sect .sec-title h3, .testimonial-sect .sec-title small,
+.doc-sec .sec-title h3, .doc-sec .sec-title small,
+.contact-sec .sec-title h3, .contact-sec .sec-title small,
+.testimonial-sec .comment-slide .comment-para p,
+.testimonial-sec .comment-slide .comment-para span, .testimonial-sec .comment-slide .comment-para a,
+.sec-title .icon-inner .fa-stack-1x,
+.faqs-sec-details .nav-tabs li a.active,
+.faqs-sec-details .nav-tabs li a.active:before,
+.contact_details .sec-title h3,
+.bn-links li a.active,
+.bn-links li a,
+.banner-slide .sec-title h3 {
+	color: #fff;
+}
+.testimonial-sec .slick-dots li button,
+.bn-links li a {
+	border-color: #fff;
+}
+.bn-links li a.active {
+	border-color: transparent;
+}
+
+.social-line li a:hover:before {border-bottom-color: $clr1;}
+.social-line li a:hover:after {border-top-color: $clr1;}
+
+.price-sec-details .price ul li, {
+	border-color: #c5c7c9;
+}
+.price-sec-details .price ul li,
+.form-field input, .form-field .select,
+.form-field input span, .form-field .select span,
+.form-field input span + i, .form-field .select span + i,
+.register-sec-details form .dropeddown li {
+	color: #6d7a83;
+}
+.form-field input, .form-field .select,
+.form-field input span, .form-field .select span,
+.form-field input span + i, .form-field .select span + i {
+	border-color: #c8cdd2;
+}
+ 
+.faqs-sec-details .ques-details p {
+	color: #2d373c;
+}
+
+
+.register-sec-details .form-field input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #6d7a83;
+}
+.register-sec-details .form-field input::-moz-placeholder { /* Firefox 19+ */
+  color: #6d7a83;
+}
+.register-sec-details .form-field input:-ms-input-placeholder { /* IE 10+ */
+  color: #6d7a83;
+}
+.register-sec-details .form-field input:-moz-placeholder { /* Firefox 18- */
+  color: #6d7a83;
+}

@@ -1,0 +1,109 @@
+@import 'base.scss';
+
+
+.responsive-mobile-menu ul li a.active,
+.banner-slide .reg-form .sec-title .fa-stack-1x,
+.play-btn .fa,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head h3,
+.confy-cmpt-details .cmpt-details .cmp-info .cmp-head .share-btn,
+.team-sec-details .team-detail .team-info > span,
+.price-sec-details .price h2 {
+	color: $clr1;
+}
+
+
+.banner-carousel .slick-prev:hover:before, .banner-carousel .slick-next:hover:before,
+.banner-slide .reg-form .sec-title,
+.contact-info-details ul,
+.sec-title .icon-inner .rhex,
+.sec-title a:hover,
+.about-sec-details .bn-links li a:hover,
+.abt-imgs .abt-img:before,
+.btn-default,
+.btn-default:hover,
+.team-sec-details .team-detail .cmntr-img .hex-inner:before,
+.social-line li a:hover,
+.team-sec-details .social-line li a:hover,
+.price-sec-details .price:before,
+.price-sec-details .price:hover .btn-default,
+.price-sec-details .price.active .btn-default, .price-sec-details .price:hover .btn-default,
+.faqs-sec-details .nav-tabs li a.active, .faqs-sec-details .nav-tabs li a:hover,
+.blog-posts .blog-post .blog-img:before, .blog-posts .blog-post .blog-img:after,
+.blog-posts .blog-post .blog-info .btn-default:hover,
+footer .social-line li a:hover,
+.menu-btn span,
+.responsive-mobile-menu,
+.about-sec-details .bn-links li a:hover,
+.scrollTop:hover,
+.two-layouts > ul li.active a,
+.contact-sec-details .form-field input[type="submit"],
+.contact-sec-details .form-field input[type="submit"]:hover {
+	background-color: $clr1;
+}
+
+.conference-tabs-sec .tab-content .tab-pane .nav-tabs li a:before,
+.price-sec-details .price.active, .price-sec-details .price:hover {
+	border-color: $clr1;
+}
+
+
+.social-line li a:hover:before {border-bottom-color: $clr1;}
+.social-line li a:hover:after {border-top-color: $clr1;}
+
+
+.sec-title h3 small,
+.sec-title a,
+.confy-cmpt-details .cmpt-details .cmp-info .us-details h3,
+.confy-cmpt-details .cmpt-details .cmp-info .us-details ul li a,
+.slick-prev:before, .slick-next:before,
+.testimonial-sec .comment-slide .comment-para span, .testimonial-sec .comment-slide .comment-para a,
+.team-sec-details .team-detail .team-info > p,
+.blog-posts .blog-post .blog-info .posted-ot span,
+.blog-posts .blog-post .blog-info .btn-default,
+footer p {
+	color:$clr2;
+}
+
+
+.conference-tabs-sec .conf-tab-list ul,
+.testimonial-sec .slick-dots li.slick-active button,
+.price-sec-details .price .btn-default {
+	background-color: $clr2;
+}
+
+.sec-title a,
+.confy-cmpt-details,
+.slick-prev:before, .slick-next:before,
+.testimonial-sec .slick-dots li button,
+.price-sec-details .price,
+.faqs-sec-details .nav-tabs li a,
+.faqs-sec-details .ques-details,
+.blog-posts .blog-post .blog-info .btn-default,
+.register-sec-details form .dropeddown,
+.register-sec-details form .dropeddown li,
+.form-field input, .form-field .select,
+.form-field input span + i, .form-field .select span + i {
+	border-color: $clr2;
+}
+.doc-sec,
+.contact-sec {
+	background-color: $bg-color2;
+}
+.faqs-sec-details .ques-details:after {
+	left: -9px;
+	border-right-color: #102033;
+	z-index: 3;
+}
+.faqs-sec-details .ques-details:before {
+	left: -11px;
+	border-right-color: #435469;
+	z-index: 2;
+}
+
+// .testimonial-sect .sec-title .icon-inner .rhex,
+// .contact_details .sec-title .icon-inner .rhex,
+// .contact_details .btn-default {
+// 	background-color: #fff;
+// }
+
+

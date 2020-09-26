@@ -1,0 +1,67 @@
+
+$font-family1 : 'Raleway', sans-serif;;
+$font-family2 : 'Roboto Slab', serif;
+$font-family3 : 'Roboto', serif;
+
+$basic-size : 14px;
+$clr1 : #dc143c;
+$clr2 : #435469;
+$temp-color : #0d1d31;
+$sec-padding: 70px 0;
+$bg-color1 : #0d1d31;
+$bg-color2 : #122135;
+
+$lgt-bg-color1 : #fbfbfb;
+$lgt-bg-color2 : #f5f5f5;
+
+
+$lgt-color1 : #0d1d31; 
+$lgt-color2 : #293239; 
+
+$para-lgt-color : #6d7a83;
+$color3 : #e47911;
+$color4 : #563d7c;
+$color5 : #89c144;
+
+
+//  ======================== COLOR SCHEME COLORS ========================= 
+
+
+$colour1 : #dc143c;
+$colour2 : #d80018;
+$colour3 : #386090;
+$colour4 : #4478b2;
+$colour5 : #2e9063;
+$colour6 : #89c144;
+$colour7 : #f1be03;
+$colour8 : #e3c552;
+$colour9 : #e47911;
+$colour10 : #e48f4c;
+$colour11 : #563d7c;
+$colour12 : #685ab1;
+$colour13 : #ec005f;
+$colour14 : #b8a279;
+
+
+@mixin transform($property) {
+	-webkit-transform: $property;
+	-ms-transform: $property;
+	transform: $property;
+}
+
+@mixin transition($property) {
+	-webkit-transition: $property;
+	-ms-transition: $property;
+	transition: $property;
+}
+
+@mixin radius($property) {
+	-webkit-border-radius: $property;
+	-ms-border-radius: $property;
+	border-radius: $property;
+}
+@mixin animation($animation) {
+	-webkit-animation: $animation;
+	-ms-animation: $animation;
+	animation: $animation;
+}

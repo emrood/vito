@@ -676,7 +676,7 @@
                             <div class="hex-deg">
                                 <div class="hex-deg">
                                     <div class="hex-inner">
-                                        <img src="{{ asset('images/default.png') }}" alt="" height="190px" width="170px">
+                                        <img src="{{ asset('images/elson.jpeg') }}" alt="" height="190px" width="170px">
                                         <a href="#" title="" class="ext-link"><i class="fa fa-link"></i></a>
                                     </div>
                                 </div>
@@ -684,15 +684,15 @@
                         </div>
                     </div><!--cmntr-img end-->
                     <div class="team-info">
-                        <h3>Elson</h3>
+                        <h3>Toussaint Elson</h3>
                         <span>Manager</span>
                         <p></p>
                         <ul class="social-line list-inline text-center">
-                            {{--<li><a href="#" class="facebook"><i class="fa fa-facebook" target="_blank"></i></a></li>--}}
+                            <li><a href="https://web.facebook.com/donelson.ditoussaint" class="facebook"><i class="fa fa-facebook" target="_blank"></i></a></li>
                             {{--<li><a href="#" class="twitter"><i class="fa fa-twitter" target="_blank"></i></a></li>--}}
-                            {{--<li><a href="#" class="google"><i class="fa fa-google-plus" target="_blank"></i></a></li>--}}
+                            <li><a href="mailto:donelsonditoussaint@gmail.com" class="google"><i class="fa fa-google-plus" target="_blank"></i></a></li>
                             {{--<li><a href="#" class="linkedin"><i class="fa fa-linkedin" target="_blank"></i></a></li>--}}
-                            {{--<li><a href="#" class="instagram"><i class="fa fa-instagram" target="_blank"></i></a></li>--}}
+                            <li><a href="https://www.instagram.com/donelsonditoussaint/" class="instagram"><i class="fa fa-instagram" target="_blank"></i></a></li>
                         </ul>
                     </div><!--team-info end-->
                 </div><!-- Elson team-detail end-->

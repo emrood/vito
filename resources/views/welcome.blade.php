@@ -131,7 +131,7 @@
                             </li>
                         </ul>
                     </div>
-                    @if($event->status === 1)
+                    @if($event->status)
                         <a href="#" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">S'enregistrer <i class="fa fa-arrow-circle-right"></i>
                         </a>
                         @endif
@@ -367,8 +367,8 @@
                                                     </div>
                                                     <p>{{ $event->description  }}</p>
                                                     <hr/>
-                                                    @if($event->status === 1)
-                                                    <a href="" title="" event_id="{{ $event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')"> Acheter mon billet <i class="fa fa-arrow-circle-right"></i></a>
+                                                    @if($event->status)
+                                                        <a href="" title="" event_id="{{ $event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')"> Acheter mon billet <i class="fa fa-arrow-circle-right"></i></a>
                                                     @endif
                                                         <br/>
                                                     <hr/>
@@ -406,8 +406,8 @@
                                                     </div>
                                                     <p>{{ $event->description  }}</p>
                                                     <hr/>
-                                                    @if($event->status === 1)
-                                                    <a href="" title="" event_id="{{ $event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')"> Acheter mon billet <i class="fa fa-arrow-circle-right"></i></a>
+                                                    @if($event->status)
+                                                        <a href="" title="" event_id="{{ $event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')"> Acheter mon billet <i class="fa fa-arrow-circle-right"></i></a>
                                                     @endif
                                                         <br/>
                                                     <hr/>
@@ -445,8 +445,8 @@
                                                     </div>
                                                     <p>{{ $event->description  }}</p>
                                                     <hr/>
-                                                    @if($event->status === 1)
-                                                    <a href="" title="" event_id="{{ $event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')">Acheter mon billet<i class="fa fa-arrow-circle-right"></i></a>
+                                                    @if($event->status)
+                                                        <a href="" title="" event_id="{{ $event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')">Acheter mon billet<i class="fa fa-arrow-circle-right"></i></a>
                                                     @endif
                                                     <br/>
                                                     <hr/>
@@ -486,8 +486,8 @@
                                                         </div>
                                                         <p>{{ $last_event->description  }}</p>
                                                         <hr/>
-                                                        @if($event->status === 1)
-                                                        <a href="" title="" event_id="{{ $last_event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')">Acheter mon billet<i class="fa fa-arrow-circle-right"></i></a>
+                                                        @if($event->status)
+                                                            <a href="" title="" event_id="{{ $last_event->id }}" class="btn-default" onclick="showError('Cette fonction sera disponible tres prochainement')">Acheter mon billet<i class="fa fa-arrow-circle-right"></i></a>
                                                         @endif
                                                         <br/>
                                                         <hr/>

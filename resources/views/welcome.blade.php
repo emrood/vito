@@ -514,6 +514,88 @@
     </section><!--conference-sec end-->
     @endif
 
+    <section class="event-price-sec sec-padding" id="price" data-scroll-index="5">
+        <div class="container">
+            <div class="sec-title">
+                <span class="icon-inner wow flipInY" data-wow-duration="300ms"><span class="fa-stack"><i
+                                class="fa rhex fa-stack-2x" style="visibility: hidden;"></i><i
+                                class="fa fa-thumbs-up fa-stack-1x"></i></span></span>
+                <h3 class="wow fadeInRight" data-wow-duration="500ms">Nos tarifs
+                    <small> / Prix parfait pour vos événments</small>
+                </h3>
+            </div><!--sec-title end-->
+            <div class="price-sec-details">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="price text-center wow fadeInUp" data-wow-duration="100ms">
+                            <h3 class="price-head">Basic</h3>
+                            <!--                            <h2>1$<small>/QR</small>-->
+                            <h2><small>1$/QR</small>
+                            </h2>
+                            <ul>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Génération de 1 à 1000 code QR</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Validation de code à l'entrée</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Compte personalisé Vitoo</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Dashboard de suivie en temps réel</li>
+                                <li><i class="fa fa-times-circle-o text-danger"></i>Gestion du bar</li>
+                                <li><i class="fa fa-times-circle-o text-danger"></i>Liste invité</li>
+                                <li><i class="fa fa-times-circle-o text-danger"></i>Liste VIP</li>
+                                <li><i class="fa fa-times-circle-o text-danger"></i>Génération de QR en backup</li>
+                                <li><i class="fa fa-times-circle-o text-danger"></i>Cordon de sécurité</li>
+                            </ul>
+                            <a href="" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">RESERVER</a>
+                        </div><!--price end-->
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="price active text-center wow fadeInUp" data-wow-duration="200ms">
+                            <h3 class="price-head">Standard</h3>
+                            <!--                            <h2>0.99$-->
+                            <!--                                <small>/QR</small>-->
+                            <!--                            </h2>-->
+                            <h2>
+                                <small>0.99$/QR</small>
+                            </h2>
+                            <ul>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Génération 1000 à 5000 code QR</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Validation de code à l'entrée</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Compte personalisé Vitoo</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Dashboard de suivie en temps réel</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Gestion du bar</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Liste invité</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Liste VIP</li>
+                                <li><i class="fa fa-times-circle-o text-danger"></i>Génération de QR en backup</li>
+                                <li><i class="fa fa-times-circle-o text-danger"></i>Cordon de sécurité</li>
+                            </ul>
+                            <a href="" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">RESERVER</a>
+                        </div><!--price end-->
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="price text-center wow fadeInUp" data-wow-duration="300ms">
+                            <h3 class="price-head">Premium</h3>
+                            <!--                            <h2>0.89$-->
+                            <!--                                <small>0.89$/QR</small>-->
+                            <!--                            </h2>-->
+                            <h2>
+                                <small>0.89$/QR</small>
+                            </h2>
+                            <ul>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Génération de 5000+ code QR</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Validation de code à l'entrée</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Compte personalisé Vitoo</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Dashboard de suivie en temps réel</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Gestion du bar</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Liste invité</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Liste VIP</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Génération de QR en backup</li>
+                                <li><i class="fa fa-check-circle-o text-success"></i>Cordon de sécurité</li>
+                            </ul>
+                            <a href="" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">RESERVER</a>
+                        </div><!--price end-->
+                    </div>
+                </div>
+            </div><!--price-sec-details end-->
+        </div>
+    </section><!--event-price-sec end-->
 
     @if(count($partners))
     <section class="sec-padding" id="sponsor" data-scroll-index="3">
@@ -611,91 +693,91 @@
         </div>
     </section><!--sec-padding end-->
 
-    <section class="team-sec sec-padding" id="speakers" data-scroll-index="4">
-        <div class="container">
-            <div class="sec-title">
-                <span class="icon-inner wow flipInY" data-wow-duration="300ms"><span class="fa-stack"><i class="fa rhex fa-stack-2x" style="visibility: hidden;"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
-                <h3>L'équipe <small>/ meet with greaters</small></h3>
-            </div><!--sec-title end-->
-            <div class="team-sec-details">
-                <div class="team-detail wow fadeInUp" data-wow-duration="100ms">
-                    <div class="cmntr-img">
-                        <div class="hex-deg">
-                            <div class="hex-deg">
-                                <div class="hex-deg">
-                                    <div class="hex-inner">
-                                        <img src="{{ asset('images/noel_emmanuel.jpg') }}" alt="" height="190px" width="170px">
-                                        <a href="#" title="" class="ext-link"><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--cmntr-img end-->
-                    <div class="team-info">
-                        <h3>Noel Emmanuel Roodly</h3>
-                        <span>Co Founder</span>
-                        <p>Développeur logiciel a Wyzdev</p>
-                        <ul class="social-line list-inline text-center">
-                            <li><a href="https://www.facebook.com/Emroody" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/emrood4" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="mailto:emmanuelroodly1@gmail.com" class="google" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/emmanuel-roodly-noel-76a704b6/" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="https://www.instagram.com/emroody/" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div><!--team-info end-->
-                </div><!-- Noel Emmanuel ROodly team-detail end-->
-                <div class="team-detail wow fadeInUp" data-wow-duration="200ms">
-                    <div class="cmntr-img">
-                        <div class="hex-deg">
-                            <div class="hex-deg">
-                                <div class="hex-deg">
-                                    <div class="hex-inner">
-                                        <img src="{{ asset('images/audin_michel.jpg') }}" alt="" height="190px" width="170px">
-                                        <a href="#" title="" class="ext-link"><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--cmntr-img end-->
-                    <div class="team-info">
-                        <h3>Audin Michel Castor</h3>
-                        <span>Co founder</span>
-                        <p>Développeur logiciel a Wyzdev</p>
-                        <ul class="social-line list-inline text-center">
-                            <li><a href="https://www.facebook.com/audinmichel.castor" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+    {{--<section class="team-sec sec-padding" id="speakers" data-scroll-index="4">--}}
+        {{--<div class="container">--}}
+            {{--<div class="sec-title">--}}
+                {{--<span class="icon-inner wow flipInY" data-wow-duration="300ms"><span class="fa-stack"><i class="fa rhex fa-stack-2x" style="visibility: hidden;"></i><i class="fa fa-user fa-stack-1x"></i></span></span>--}}
+                {{--<h3>L'équipe <small>/ meet with greaters</small></h3>--}}
+            {{--</div><!--sec-title end-->--}}
+            {{--<div class="team-sec-details">--}}
+                {{--<div class="team-detail wow fadeInUp" data-wow-duration="100ms">--}}
+                    {{--<div class="cmntr-img">--}}
+                        {{--<div class="hex-deg">--}}
+                            {{--<div class="hex-deg">--}}
+                                {{--<div class="hex-deg">--}}
+                                    {{--<div class="hex-inner">--}}
+                                        {{--<img src="{{ asset('images/noel_emmanuel.jpg') }}" alt="" height="190px" width="170px">--}}
+                                        {{--<a href="#" title="" class="ext-link"><i class="fa fa-link"></i></a>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div><!--cmntr-img end-->--}}
+                    {{--<div class="team-info">--}}
+                        {{--<h3>Noel Emmanuel Roodly</h3>--}}
+                        {{--<span>Co Founder</span>--}}
+                        {{--<p>Développeur logiciel a Wyzdev</p>--}}
+                        {{--<ul class="social-line list-inline text-center">--}}
+                            {{--<li><a href="https://www.facebook.com/Emroody" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>--}}
+                            {{--<li><a href="https://twitter.com/emrood4" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>--}}
+                            {{--<li><a href="mailto:emmanuelroodly1@gmail.com" class="google" target="_blank"><i class="fa fa-google-plus"></i></a></li>--}}
+                            {{--<li><a href="https://www.linkedin.com/in/emmanuel-roodly-noel-76a704b6/" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>--}}
+                            {{--<li><a href="https://www.instagram.com/emroody/" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>--}}
+                        {{--</ul>--}}
+                    {{--</div><!--team-info end-->--}}
+                {{--</div><!-- Noel Emmanuel ROodly team-detail end-->--}}
+                {{--<div class="team-detail wow fadeInUp" data-wow-duration="200ms">--}}
+                    {{--<div class="cmntr-img">--}}
+                        {{--<div class="hex-deg">--}}
+                            {{--<div class="hex-deg">--}}
+                                {{--<div class="hex-deg">--}}
+                                    {{--<div class="hex-inner">--}}
+                                        {{--<img src="{{ asset('images/audin_michel.jpg') }}" alt="" height="190px" width="170px">--}}
+                                        {{--<a href="#" title="" class="ext-link"><i class="fa fa-link"></i></a>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div><!--cmntr-img end-->--}}
+                    {{--<div class="team-info">--}}
+                        {{--<h3>Audin Michel Castor</h3>--}}
+                        {{--<span>Co founder</span>--}}
+                        {{--<p>Développeur logiciel a Wyzdev</p>--}}
+                        {{--<ul class="social-line list-inline text-center">--}}
+                            {{--<li><a href="https://www.facebook.com/audinmichel.castor" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>--}}
                             {{--<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>--}}
-                            <li><a href="mailto:handycomeau@gmail.com" class="google"><i class="fa fa-google-plus" target="_blank"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/audin-michel-castor-2b990a117/" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            {{--<li><a href="mailto:handycomeau@gmail.com" class="google"><i class="fa fa-google-plus" target="_blank"></i></a></li>--}}
+                            {{--<li><a href="https://www.linkedin.com/in/audin-michel-castor-2b990a117/" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>--}}
                             {{--<li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>--}}
-                        </ul>
-                    </div><!--team-info end-->
-                </div><!-- Castor team-detail end-->
-                <div class="team-detail wow fadeInUp" data-wow-duration="300ms">
-                    <div class="cmntr-img">
-                        <div class="hex-deg">
-                            <div class="hex-deg">
-                                <div class="hex-deg">
-                                    <div class="hex-inner">
-                                        <img src="{{ asset('images/elson.jpeg') }}" alt="" height="190px" width="170px">
-                                        <a href="#" title="" class="ext-link"><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--cmntr-img end-->
-                    <div class="team-info">
-                        <h3>Toussaint Elson</h3>
-                        <span>Manager</span>
-                        <p></p>
-                        <ul class="social-line list-inline text-center">
-                            <li><a href="https://web.facebook.com/donelson.ditoussaint" class="facebook"><i class="fa fa-facebook" target="_blank"></i></a></li>
+                        {{--</ul>--}}
+                    {{--</div><!--team-info end-->--}}
+                {{--</div><!-- Castor team-detail end-->--}}
+                {{--<div class="team-detail wow fadeInUp" data-wow-duration="300ms">--}}
+                    {{--<div class="cmntr-img">--}}
+                        {{--<div class="hex-deg">--}}
+                            {{--<div class="hex-deg">--}}
+                                {{--<div class="hex-deg">--}}
+                                    {{--<div class="hex-inner">--}}
+                                        {{--<img src="{{ asset('images/elson.jpeg') }}" alt="" height="190px" width="170px">--}}
+                                        {{--<a href="#" title="" class="ext-link"><i class="fa fa-link"></i></a>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div><!--cmntr-img end-->--}}
+                    {{--<div class="team-info">--}}
+                        {{--<h3>Toussaint Elson</h3>--}}
+                        {{--<span>Manager</span>--}}
+                        {{--<p></p>--}}
+                        {{--<ul class="social-line list-inline text-center">--}}
+                            {{--<li><a href="https://web.facebook.com/donelson.ditoussaint" class="facebook"><i class="fa fa-facebook" target="_blank"></i></a></li>--}}
                             {{--<li><a href="#" class="twitter"><i class="fa fa-twitter" target="_blank"></i></a></li>--}}
-                            <li><a href="mailto:donelsonditoussaint@gmail.com" class="google"><i class="fa fa-google-plus" target="_blank"></i></a></li>
+                            {{--<li><a href="mailto:donelsonditoussaint@gmail.com" class="google"><i class="fa fa-google-plus" target="_blank"></i></a></li>--}}
                             {{--<li><a href="#" class="linkedin"><i class="fa fa-linkedin" target="_blank"></i></a></li>--}}
-                            <li><a href="https://www.instagram.com/donelsonditoussaint/" class="instagram"><i class="fa fa-instagram" target="_blank"></i></a></li>
-                        </ul>
-                    </div><!--team-info end-->
-                </div><!-- Elson team-detail end-->
+                            {{--<li><a href="https://www.instagram.com/donelsonditoussaint/" class="instagram"><i class="fa fa-instagram" target="_blank"></i></a></li>--}}
+                        {{--</ul>--}}
+                    {{--</div><!--team-info end-->--}}
+                {{--</div><!-- Elson team-detail end-->--}}
                 {{--<div class="team-detail wow fadeInUp" data-wow-duration="400ms">--}}
                     {{--<div class="cmntr-img">--}}
                         {{--<div class="hex-deg">--}}
@@ -722,96 +804,15 @@
                         {{--</ul>--}}
                     {{--</div><!--team-info end-->--}}
                 {{--</div><!--team-detail end-->--}}
-            </div><!--team-sec-details end-->
-            <div class="spons-dv text-center wow fadeInUp" data-wow-duration="300ms">
+            {{--</div><!--team-sec-details end-->--}}
+            {{--<div class="spons-dv text-center wow fadeInUp" data-wow-duration="300ms">--}}
                 {{--<a href="#" title="" class="btn-default"><i class="fa fa-user"></i> see all speakers</a>--}}
-            </div><!--spons-dv end-->
-        </div>
-    </section><!--team-sec end-->
+            {{--</div><!--spons-dv end-->--}}
+        {{--</div>--}}
+    {{--</section><!--team-sec end-->--}}
 
     <!-- EVENT FACS -->
-    <section class="event-price-sec sec-padding" id="price" data-scroll-index="5">
-        <div class="container">
-            <div class="sec-title">
-                <span class="icon-inner wow flipInY" data-wow-duration="300ms"><span class="fa-stack"><i
-                                class="fa rhex fa-stack-2x" style="visibility: hidden;"></i><i
-                                class="fa fa-thumbs-up fa-stack-1x"></i></span></span>
-                <h3 class="wow fadeInRight" data-wow-duration="500ms">Nos tarifs
-                    <small> / Prix parfait pour vos événments</small>
-                </h3>
-            </div><!--sec-title end-->
-            <div class="price-sec-details">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="price text-center wow fadeInUp" data-wow-duration="100ms">
-                            <h3 class="price-head">Basic</h3>
-                            <!--                            <h2>1$<small>/QR</small>-->
-                            <h2><small>1$/QR</small>
-                            </h2>
-                            <ul>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Génération de 1 à 1000 code QR</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Validation de code à l'entrée</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Compte personalisé Vitoo</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Dashboard de suivie en temps réel</li>
-                                <li><i class="fa fa-times-circle-o text-danger"></i>Gestion du bar</li>
-                                <li><i class="fa fa-times-circle-o text-danger"></i>Liste invité</li>
-                                <li><i class="fa fa-times-circle-o text-danger"></i>Liste VIP</li>
-                                <li><i class="fa fa-times-circle-o text-danger"></i>Génération de QR en backup</li>
-                                <li><i class="fa fa-times-circle-o text-danger"></i>Cordon de sécurité</li>
-                            </ul>
-                            <a href="" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">RESERVER</a>
-                        </div><!--price end-->
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="price active text-center wow fadeInUp" data-wow-duration="200ms">
-                            <h3 class="price-head">Standard</h3>
-                            <!--                            <h2>0.99$-->
-                            <!--                                <small>/QR</small>-->
-                            <!--                            </h2>-->
-                            <h2>
-                                <small>0.99$/QR</small>
-                            </h2>
-                            <ul>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Génération 1000 à 5000 code QR</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Validation de code à l'entrée</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Compte personalisé Vitoo</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Dashboard de suivie en temps réel</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Gestion du bar</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Liste invité</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Liste VIP</li>
-                                <li><i class="fa fa-times-circle-o text-danger"></i>Génération de QR en backup</li>
-                                <li><i class="fa fa-times-circle-o text-danger"></i>Cordon de sécurité</li>
-                            </ul>
-                            <a href="" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">RESERVER</a>
-                        </div><!--price end-->
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="price text-center wow fadeInUp" data-wow-duration="300ms">
-                            <h3 class="price-head">Premium</h3>
-                            <!--                            <h2>0.89$-->
-                            <!--                                <small>0.89$/QR</small>-->
-                            <!--                            </h2>-->
-                            <h2>
-                                <small>0.89$/QR</small>
-                            </h2>
-                            <ul>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Génération de 5000+ code QR</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Validation de code à l'entrée</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Compte personalisé Vitoo</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Dashboard de suivie en temps réel</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Gestion du bar</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Liste invité</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Liste VIP</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Génération de QR en backup</li>
-                                <li><i class="fa fa-check-circle-o text-success"></i>Cordon de sécurité</li>
-                            </ul>
-                            <a href="" title="" class="btn-default" onclick="showError('Cette option sera disponible bientot')">RESERVER</a>
-                        </div><!--price end-->
-                    </div>
-                </div>
-            </div><!--price-sec-details end-->
-        </div>
-    </section><!--event-price-sec end-->
+
 
     <section class="faqs-sec sec-padding">
         <div class="container">

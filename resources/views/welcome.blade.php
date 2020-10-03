@@ -1170,7 +1170,7 @@
                                 class="fa fa-facebook"></i></a></li>
                 <li class="wow flipInY" data-wow-duration="200ms"><a href="#" class="twitter"><i
                                 class="fa fa-twitter"></i></a></li>
-                <li class="wow flipInY" data-wow-duration="300ms"><a href="mailto:vitoohts@gmail.com" class="google"><i
+                <li class="wow flipInY" data-wow-duration="300ms"><a href="mailto:contact@vitoo.tech" class="google"><i
                                 class="fa fa-google-plus"></i></a></li>
                 <li class="wow flipInY" data-wow-duration="400ms"><a href="https://www.linkedin.com/company/vitoohts" target="_blank" class="linkedin"><i
                                 class="fa fa-linkedin"></i></a></li>

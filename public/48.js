@@ -29,9 +29,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
   !*** ./resources/js/src/assets/images/logo.png ***!
   \*************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("module.exports = __webpack_require__.p + \"images/logo.png?3991290d506d8a72174236635990f01d\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvc3JjL2Fzc2V0cy9pbWFnZXMvbG9nby5wbmc/MjQwMiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxpQkFBaUIscUJBQXVCIiwiZmlsZSI6Ii4vcmVzb3VyY2VzL2pzL3NyYy9hc3NldHMvaW1hZ2VzL2xvZ28ucG5nLmpzIiwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArIFwiaW1hZ2VzL2xvZ28ucG5nPzM5OTEyOTBkNTA2ZDhhNzIxNzQyMzY2MzU5OTBmMDFkXCI7Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/src/assets/images/logo.png\n");
+eval("module.exports = \"/images/logo.png?81428bca234cdebbcd829e3c61a366fa\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvc3JjL2Fzc2V0cy9pbWFnZXMvbG9nby5wbmc/MjQwMiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSIsImZpbGUiOiIuL3Jlc291cmNlcy9qcy9zcmMvYXNzZXRzL2ltYWdlcy9sb2dvLnBuZy5qcyIsInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzID0gXCIvaW1hZ2VzL2xvZ28ucG5nPzgxNDI4YmNhMjM0Y2RlYmJjZDgyOWUzYzYxYTM2NmZhXCI7Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/src/assets/images/logo.png\n");
 
 /***/ }),
 

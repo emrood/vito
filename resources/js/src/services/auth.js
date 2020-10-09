@@ -15,7 +15,9 @@ export default {
     return axios.post(process.env.MIX_SENTRY_DSN_API+'api/register', userData)
   },
   jwtLogin (userData) {
-    return axios.post(process.env.MIX_SENTRY_DSN_API+'api/auth/login', userData)
+
+    // return axios.post(process.env.APP_URL+'api/auth/login', userData)
+    return axios.post('http://192.168.2.130:8000/api/auth/login', userData)
   },
   jwtRegister (userData) {
     return axios.post(process.env.MIX_SENTRY_DSN_API+'api/auth/register', userData)

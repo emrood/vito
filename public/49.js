@@ -29,9 +29,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
   !*** ./resources/js/src/assets/images/error/error-02.png ***!
   \***********************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("module.exports = __webpack_require__.p + \"images/error-02.png?48a1a9f606b541929e35ead953d91194\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvc3JjL2Fzc2V0cy9pbWFnZXMvZXJyb3IvZXJyb3ItMDIucG5nPzkxMmQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsaUJBQWlCLHFCQUF1QiIsImZpbGUiOiIuL3Jlc291cmNlcy9qcy9zcmMvYXNzZXRzL2ltYWdlcy9lcnJvci9lcnJvci0wMi5wbmcuanMiLCJzb3VyY2VzQ29udGVudCI6WyJtb2R1bGUuZXhwb3J0cyA9IF9fd2VicGFja19wdWJsaWNfcGF0aF9fICsgXCJpbWFnZXMvZXJyb3ItMDIucG5nPzQ4YTFhOWY2MDZiNTQxOTI5ZTM1ZWFkOTUzZDkxMTk0XCI7Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/src/assets/images/error/error-02.png\n");
+eval("module.exports = \"/images/error-02.png?48a1a9f606b541929e35ead953d91194\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvc3JjL2Fzc2V0cy9pbWFnZXMvZXJyb3IvZXJyb3ItMDIucG5nPzkxMmQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEiLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvc3JjL2Fzc2V0cy9pbWFnZXMvZXJyb3IvZXJyb3ItMDIucG5nLmpzIiwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSBcIi9pbWFnZXMvZXJyb3ItMDIucG5nPzQ4YTFhOWY2MDZiNTQxOTI5ZTM1ZWFkOTUzZDkxMTk0XCI7Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/src/assets/images/error/error-02.png\n");
 
 /***/ }),
 

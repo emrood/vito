@@ -11,11 +11,18 @@
 |
 */
 
+use App\Models\Event;
+use App\Models\Partner;
+
+Route::view('/welcome', 'welcome', ['events' => Event::orderBy('event_date', 'DESC')->skip(0)->take(10)->get(), 'partners' => Partner::all()]);
+
 Route::get('/{any}', 'VitoController')->where('any', '.*');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 //Route::get('/', function()
 //{

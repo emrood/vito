@@ -16,7 +16,7 @@ use App\Models\Partner;
 
 Route::view('/', 'welcome', ['events' => Event::orderBy('event_date', 'DESC')->skip(0)->take(10)->get(), 'partners' => Partner::all()]);
 
-Route::get('/app/{any}', 'VitoController')->where('any', '.*');
+Route::get('/config/{any}', 'VitoController')->where('any', '.*');
 
 Auth::routes();
 

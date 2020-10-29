@@ -109,6 +109,24 @@ class JwtController extends Controller
         $user_role->role_id = 6;
         $user_role->user_id = $user->id;
         $user_role->save();
+		
+		try{
+			$user->username = $request->username;
+		}catch(\Exception $e){
+			
+		}
+		
+		try{
+			$user->phone_number = $request->username;
+		}catch(\Exception $e){
+			
+		}
+		
+		try{
+			$user->save();
+		}catch(\Exception $e){
+			
+		}
 
         return response()->json(['message' => 'Enregistrement réussi']);
     }

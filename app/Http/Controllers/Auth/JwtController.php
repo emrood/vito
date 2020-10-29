@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserRole;
 use App\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -104,8 +105,12 @@ class JwtController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
 //        $user = $this->guard()->login($user);
+        $user_role = new UserRole();
+        $user_role->role_id = 6;
+        $user_role->user_id = $user->id;
+        $user_role->save();
 
-        return response()->json(['message' => 'Register Successfully']);
+        return response()->json(['message' => 'Enregistrement réussi']);
     }
 
     protected function create(array $data)

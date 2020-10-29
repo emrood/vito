@@ -39,7 +39,7 @@ class GenerateUserName extends Command
     public function handle()
     {
 
-        $users = User::all();
+        $users = User::whereNull('username')->get();
         foreach ($users as $user) {
             if (empty($user->username)) {
                 $this->warn($user->name . ' doesnt have a username');
